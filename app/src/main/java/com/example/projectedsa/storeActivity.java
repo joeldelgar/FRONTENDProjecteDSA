@@ -1,0 +1,45 @@
+package com.example.projectedsa;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import com.example.projectedsa.api.Objecte;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class storeActivity extends AppCompatActivity {
+
+    List<Objecte> objectList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_store);
+        init();
+    }
+
+    public void init(){
+        objectList = new ArrayList<>();
+        objectList.add(new Objecte("Ganzua", "Et permet obrir qualsevol porta"));
+        objectList.add(new Objecte("Botes silencioses", "Els enemics no et detectaràn tan facilment"));
+        objectList.add(new Objecte("Ulleres de Visió Nocturna", "Et permeten veure en la foscor"));
+        objectList.add(new Objecte("Llanterna", "Et permet iluminar"));
+        objectList.add(new Objecte("Gorro Negre", "Et manté calent en dies de fred"));
+
+        ListAdapter listAdapter =new ListAdapter(objectList, this);
+        RecyclerView recyclerView = findViewById(R.id.ListRecicleView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(listAdapter);
+    }
+    public void onClick (View v){
+        Intent intent = new Intent(this, buy_objectActivity.class);
+        startActivity(intent);
+    }
+}

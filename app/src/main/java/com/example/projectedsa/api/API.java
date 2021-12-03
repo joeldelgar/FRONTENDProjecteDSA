@@ -2,6 +2,7 @@ package com.example.projectedsa.api;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface API {
@@ -12,5 +13,8 @@ public interface API {
 
     @POST("/dsaApp/user/add")
     Call<User> register(@Body CredentialsReq user);
+
+    @GET("dsaApp/Game")
+    Call<User> store();
 
 }

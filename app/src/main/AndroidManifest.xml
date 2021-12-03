@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ProjecteDSA"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".buy_objectActivity"
+            android:exported="true" />
+        <activity
+            android:name=".storeActivity"
+            android:exported="true" />
+        <activity
             android:name=".PrincipalActivity"
             android:exported="true" />
         <activity
