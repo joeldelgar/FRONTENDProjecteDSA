@@ -26,11 +26,11 @@ public class storeActivity extends AppCompatActivity {
 
     public void init(){
         objectList = new ArrayList<>();
-        objectList.add(new Objecte("Ganzua", "Et permet obrir qualsevol porta"));
-        objectList.add(new Objecte("Botes silencioses", "Els enemics no et detectaràn tan facilment"));
-        objectList.add(new Objecte("Ulleres de Visió Nocturna", "Et permeten veure en la foscor"));
-        objectList.add(new Objecte("Llanterna", "Et permet iluminar"));
-        objectList.add(new Objecte("Gorro Negre", "Et manté calent en dies de fred"));
+        objectList.add(new Objecte("Ganzua", "Et permet obrir qualsevol porta", "2000"));
+        objectList.add(new Objecte("Botes silencioses", "Els enemics no et detectaràn tan facilment", "1000"));
+        objectList.add(new Objecte("Ulleres de Visió Nocturna", "Et permeten veure en la foscor", "3000"));
+        objectList.add(new Objecte("Llanterna", "Et permet iluminar", "4000"));
+        objectList.add(new Objecte("Gorro Negre", "Et manté calent en dies de fred", "500"));
 
         ListAdapter listAdapter =new ListAdapter(objectList, this);
         RecyclerView recyclerView = findViewById(R.id.ListRecicleView);

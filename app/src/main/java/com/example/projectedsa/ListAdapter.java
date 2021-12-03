@@ -52,8 +52,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         ViewHolder(View itemView){
             super(itemView);
             iconImage=itemView.findViewById(R.id.iconImagenView);
-            object_name=itemView.findViewById(R.id.trackTextView);
-            description=itemView.findViewById(R.id.artistTextView);
+            object_name=itemView.findViewById(R.id.NameTextView);
+            description=itemView.findViewById(R.id.DescriptionTextView);
         }
 
         void bindData(final Objecte item){
