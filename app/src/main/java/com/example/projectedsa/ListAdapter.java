@@ -1,6 +1,7 @@
 package com.example.projectedsa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,23 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int position) {
         holder.bindData(dades.get(position));
+        holder.iconImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(this, buy_objectActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        holder.object_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(this, buy_objectActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     @Override
@@ -59,6 +77,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         void bindData(final Objecte item){
             object_name.setText(item.getNom());
             description.setText(item.getDescription());
+
+
         }
+
+
     }
 }

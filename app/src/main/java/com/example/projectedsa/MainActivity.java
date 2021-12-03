@@ -1,7 +1,6 @@
 package com.example.projectedsa;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,13 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.projectedsa.api.API;
 import com.example.projectedsa.api.CredentialsReq;
 import com.example.projectedsa.api.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.i("LOGIN", "OK"+user);
                             Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
                             startActivity(intent);
+                            Toast.makeText(MainActivity.this, "200 OK", Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override
