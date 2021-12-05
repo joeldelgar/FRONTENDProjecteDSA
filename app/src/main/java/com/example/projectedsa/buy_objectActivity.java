@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class buy_objectActivity extends AppCompatActivity {
 
@@ -17,6 +18,15 @@ public class buy_objectActivity extends AppCompatActivity {
         Button exit = (Button) findViewById(R.id.exit_btn);
         Button buy = (Button) findViewById(R.id.buy_btn);
 
+        TextView objectName = (TextView) findViewById(R.id.TextObjectName);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        objectName.setText(name);
+
+        TextView description = (TextView) findViewById(R.id.TextObjectDes);
+        Intent intent2 = getIntent();
+        String des = intent2.getStringExtra("description");
+        description.setText(des);
 
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
