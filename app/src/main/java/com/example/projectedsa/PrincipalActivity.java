@@ -30,6 +30,15 @@ public class PrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
 
         ImageButton store = (ImageButton) findViewById(R.id.store_btn);
+        ImageButton edit = (ImageButton) findViewById(R.id.editUser_btn);
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (getApplicationContext(), editUserActivity.class);
+                startActivity(intent);
+            }
+        });
 
         store.setOnClickListener(new View.OnClickListener() {
             @Override

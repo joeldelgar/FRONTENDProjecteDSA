@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ProjecteDSA"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".editUserActivity"
+            android:exported="true" />
+        <activity
             android:name=".buy_objectActivity"
             android:exported="true" />
         <activity

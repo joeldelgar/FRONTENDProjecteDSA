@@ -2,8 +2,10 @@ package com.example.projectedsa.api;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface API {
 
@@ -16,5 +18,11 @@ public interface API {
 
     @GET("dsaApp/Game")
     Call<User> store();
+
+    @PUT("/dsaApp/user/update")
+    Call<User> updateUser(@Body CredentialsReq user);
+
+    @DELETE("/dsaApp/user/delete/{name}")
+    Call<User> deleteUser(String name);
 
 }

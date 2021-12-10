@@ -9,15 +9,29 @@
 
     <ImageButton
         android:id="@+id/store_btn"
-        android:layout_width="124dp"
-        android:layout_height="105dp"
+        android:layout_width="100dp"
+        android:layout_height="87dp"
         android:backgroundTint="#FF9800"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18"
+        app:layout_constraintVertical_bias="0.024"
         app:srcCompat="@drawable/outline_storefront_black_24dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/editUser_btn"
+        android:layout_width="100dp"
+        android:layout_height="87dp"
+        android:backgroundTint="#FF9800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024"
+        app:srcCompat="@drawable/outline_account_circle_black_24dp"
         tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
