@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
                             Log.i("LOGIN", "OK"+user);
                             Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
                             startActivity(intent);
-                            Toast.makeText(MainActivity.this, "200 OK", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Usuari i Contrasenya Correctes", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(MainActivity.this, "Usuari i/o Contrasenya Incorrectes", Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override
@@ -81,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                             Log.i("REGISTER", "OK"+user);
                             Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
                             startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this, "EL NOM D'USUARI INTRODUIT JA EXISTEIX, PORVA AMB UN ALTRE DIFERENT", Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override

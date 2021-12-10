@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projectedsa.api.Objecte;
 
@@ -54,9 +56,9 @@ public class storeActivity extends AppCompatActivity {
         TextView name = (TextView) findViewById(R.id.NameTextView);
         TextView description = (TextView) findViewById(R.id.DescriptionTextView);
         String n = name.getText().toString().trim();
-        System.out.println(n);
+        Log.e("Nom", "EL NOM ES: "+n);
         String d = description.getText().toString().trim();
-        System.out.println(d);
+        Log.e("Descripció", "DESCRIPCIÓ: "+d);
 
         Intent intent = new Intent(this, buy_objectActivity.class);
         intent.putExtra("name", n);
