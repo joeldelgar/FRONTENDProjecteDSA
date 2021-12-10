@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,20 +34,34 @@ public class editUserActivity extends AppCompatActivity {
 
         Button edit = (Button) findViewById(R.id.Edit_btn);
         Button delete = (Button) findViewById(R.id.deleteUser_btn);
-        TextView Name = (TextView) findViewById(R.id.userNametxt);
-        TextView Psw = (TextView) findViewById(R.id.pswUsertxt);
+        ImageButton back = (ImageButton) findViewById(R.id.back_btn);
+        TextView name = (TextView) findViewById(R.id.userNametxt);
+        TextView psw = (TextView) findViewById(R.id.pswUsertxt);
 
+        SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        String userName = sharedPref.getString("User",null);
+        String userPsw = sharedPref.getString("psw",null);
+
+        name.setText(userName);
+        psw.setText(userPsw);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
+                startActivity(intent);
+            }
+        });
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPref = editUserActivity.this.getPreferences(Context.MODE_PRIVATE);
-                String userName = sharedPref.getString("User",null);
-                String userPsw = sharedPref.getString("psw",null);
+                String n = name.getText().toString();
+                String p = psw.getText().toString();
 
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<User> call = gerritAPI.updateUser(new CredentialsReq(userName, userPsw));
+                Call<User> call = gerritAPI.updateUser(new CredentialsReq(n, p), userName);
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
@@ -72,13 +87,10 @@ public class editUserActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPref = editUserActivity.this.getPreferences(Context.MODE_PRIVATE);
-                String name = sharedPref.getString("User",null);
-
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<User> call = gerritAPI.deleteUser(name);
+                Call<User> call = gerritAPI.deleteUser(userName);
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {

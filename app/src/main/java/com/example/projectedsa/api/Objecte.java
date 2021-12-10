@@ -1,6 +1,8 @@
 package com.example.projectedsa.api;
 
-public class Objecte {
+import java.io.Serializable;
+
+public class Objecte implements Serializable {
     public String nom;
     public String description;
     public String points;

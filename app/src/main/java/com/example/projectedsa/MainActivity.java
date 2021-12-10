@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String userName = user.getText().toString();
                 String password = psw.getText().toString();
-
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
@@ -53,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
                             Log.i("LOGIN", "OK"+user);
                             Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
                             startActivity(intent);
-                            SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+                            SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPref.edit();
-                            editor.putString("login", "OK");
-                            editor.putString("User", user.getName());
-                            editor.putString("psw", user.getPsw());
+                            editor.putString("User", userName);
+                            editor.putString("psw", password);
                             editor.commit();
+
                             Toast.makeText(MainActivity.this, "Usuari i Contrasenya Correctes", Toast.LENGTH_LONG).show();
                         }else{
                             Toast.makeText(MainActivity.this, "Usuari i/o Contrasenya Incorrectes", Toast.LENGTH_LONG).show();

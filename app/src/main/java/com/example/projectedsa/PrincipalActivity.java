@@ -45,7 +45,7 @@ public class PrincipalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), storeActivity.class);
                 startActivity(intent);
-                /*Gson gson = new GsonBuilder().setLenient().create();
+                Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
                 Call<User> call = gerritAPI.store();
@@ -64,7 +64,6 @@ public class PrincipalActivity extends AppCompatActivity {
                         Toast.makeText(PrincipalActivity.this, "Error al carregar la tenda", Toast.LENGTH_LONG).show();
                     }
                 });
-                */
             }
         });
     }

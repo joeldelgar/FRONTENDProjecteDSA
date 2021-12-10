@@ -36,24 +36,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int position) {
         holder.bindData(dades.get(position));
-        holder.iconImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("Joel","Position");
-                Intent intent = new Intent(context, buy_objectActivity.class);
-                context.startActivity(intent);
-            }
-        });
-
-        holder.object_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, buy_objectActivity.class);
-                context.startActivity(intent);
-
-            }
-        });
     }
+
 
     @Override
     public int getItemCount() {
@@ -78,7 +62,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         void bindData(final Objecte item){
             object_name.setText(item.getNom());
             description.setText(item.getDescription());
+            object_name.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
 
+                    Log.d("JOEL", item.getNom());
+                    Intent intent = new Intent(context, buy_objectActivity.class);
+                    intent.putExtra("item", item);
+                    context.startActivity(intent);
+
+
+                }
+            });
 
         }
 

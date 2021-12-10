@@ -20,7 +20,7 @@ public interface API {
     Call<User> store();
 
     @PUT("/dsaApp/user/update")
-    Call<User> updateUser(@Body CredentialsReq user);
+    Call<User> updateUser(@Body CredentialsReq user, String oldName);
 
     @DELETE("/dsaApp/user/delete/{name}")
     Call<User> deleteUser(String name);
