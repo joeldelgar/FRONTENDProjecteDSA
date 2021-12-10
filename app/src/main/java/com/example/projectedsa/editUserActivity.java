@@ -2,7 +2,9 @@ package com.example.projectedsa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,8 +39,9 @@ public class editUserActivity extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userName = Name.getText().toString();
-                String userPsw = Psw.getText().toString();
+                SharedPreferences sharedPref = editUserActivity.this.getPreferences(Context.MODE_PRIVATE);
+                String userName = sharedPref.getString("User",null);
+                String userPsw = sharedPref.getString("psw",null);
 
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
@@ -69,7 +72,8 @@ public class editUserActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = Name.getText().toString();
+                SharedPreferences sharedPref = editUserActivity.this.getPreferences(Context.MODE_PRIVATE);
+                String name = sharedPref.getString("User",null);
 
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();

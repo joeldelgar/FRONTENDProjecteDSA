@@ -2,6 +2,7 @@ package com.example.projectedsa;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         holder.iconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("Joel","Position");
                 Intent intent = new Intent(context, buy_objectActivity.class);
                 context.startActivity(intent);
             }
