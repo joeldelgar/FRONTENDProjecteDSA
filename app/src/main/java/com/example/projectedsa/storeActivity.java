@@ -52,17 +52,4 @@ public class storeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapter);
     }
-    /*public void onClick (View v){
-        TextView name = (TextView) findViewById(R.id.NameTextView);
-        TextView description = (TextView) findViewById(R.id.DescriptionTextView);
-        String n = name.getText().toString().trim();
-        Log.e("Nom", "EL NOM ES: "+n);
-        String d = description.getText().toString().trim();
-        Log.e("Descripció", "DESCRIPCIÓ: "+d);
-
-        //Intent intent = new Intent(this, buy_objectActivity.class);
-        //intent.putExtra("name", n);
-        //intent.putExtra("description", d);
-        //startActivity(intent);
-    }*/
 }

@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userName = user.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
+                startActivity(intent);
+                /*String userName = user.getText().toString();
                 String password = psw.getText().toString();
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
@@ -68,40 +70,15 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("LOGIN", "ERROR",t);
                         Toast.makeText(MainActivity.this, "Usuari i/o Contrasenya Incorrectes", Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
             }
         });
 
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userName = user.getText().toString();
-                String password = psw.getText().toString();
-
-                Gson gson = new GsonBuilder().setLenient().create();
-                Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
-                API gerritAPI = retrofit.create(API.class);
-                Call<User> call = gerritAPI.register(new CredentialsReq(userName,password));
-                call.enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-                        int variable = response.code();
-                        if(response.isSuccessful()){
-                            User user = response.body();
-                            Log.i("REGISTER", "OK"+user);
-                            Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
-                            startActivity(intent);
-                        }
-                        else{
-                            Toast.makeText(MainActivity.this, "EL NOM D'USUARI INTRODUIT JA EXISTEIX, PORVA AMB UN ALTRE DIFERENT", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-                        Log.e("REGISTER", "ERROR",t);
-                        Toast.makeText(MainActivity.this, "ERROR AL CREAR USUARI", Toast.LENGTH_LONG).show();
-                    }
-                });
+                Intent intent = new Intent(getApplicationContext(), registerActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00BCD4"
     tools:context=".storeActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ListRecicleView"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="410dp"
+        android:layout_height="647dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="1dp"
@@ -21,8 +22,8 @@
 
     <ImageButton
         android:id="@+id/return_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="99dp"
+        android:layout_height="86dp"
         android:backgroundTint="#9C27B0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

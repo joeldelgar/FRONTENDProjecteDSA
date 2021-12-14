@@ -31,6 +31,15 @@ public class PrincipalActivity extends AppCompatActivity {
 
         ImageButton store = (ImageButton) findViewById(R.id.store_btn);
         ImageButton edit = (ImageButton) findViewById(R.id.editUser_btn);
+        ImageButton friends = (ImageButton) findViewById(R.id.friends_btn);
+
+        friends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (getApplicationContext(), friendsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,8 +52,9 @@ public class PrincipalActivity extends AppCompatActivity {
         store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), storeActivity.class);
+                /*Intent intent = new Intent(getApplicationContext(), storeActivity.class);
                 startActivity(intent);
+                 */
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
@@ -54,7 +64,7 @@ public class PrincipalActivity extends AppCompatActivity {
                     public void onResponse(Call<User> call, Response<User> response) {
                         User user =  response.body();
                         Log.i("STORE", "OK"+user);
-                        Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), storeActivity.class);
                         startActivity(intent);
                     }
 

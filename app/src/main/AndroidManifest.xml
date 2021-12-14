@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ProjecteDSA"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".friendsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".registerActivity"
+            android:exported="true" />
+        <activity
             android:name=".editUserActivity"
             android:exported="true" />
         <activity
