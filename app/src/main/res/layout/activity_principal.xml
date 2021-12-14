@@ -9,22 +9,22 @@
 
     <ImageButton
         android:id="@+id/store_btn"
-        android:layout_width="100dp"
-        android:layout_height="87dp"
+        android:layout_width="112dp"
+        android:layout_height="103dp"
         android:backgroundTint="#FF9800"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024"
+        app:layout_constraintVertical_bias="0.426"
         app:srcCompat="@drawable/outline_storefront_black_24dp"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/editUser_btn"
-        android:layout_width="100dp"
-        android:layout_height="87dp"
+        android:layout_width="112dp"
+        android:layout_height="103dp"
         android:backgroundTint="#FF9800"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,15 +37,56 @@
 
     <ImageButton
         android:id="@+id/friends_btn"
-        android:layout_width="100dp"
-        android:layout_height="87dp"
+        android:layout_width="112dp"
+        android:layout_height="103dp"
         android:backgroundTint="#FF9800"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024"
+        app:layout_constraintVertical_bias="0.221"
         app:srcCompat="@drawable/outline_people_black_24dp"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/play_btn"
+        android:layout_width="382dp"
+        android:layout_height="158dp"
+        android:backgroundTint="#F44336"
+        android:text="PLAY"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.972" />
+
+    <ImageButton
+        android:id="@+id/statistics"
+        android:layout_width="112dp"
+        android:layout_height="103dp"
+        android:backgroundTint="#FF9800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63"
+        app:srcCompat="@drawable/outline_assessment_black_24dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="251dp"
+        android:layout_height="482dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.066"
+        app:srcCompat="@drawable/character" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

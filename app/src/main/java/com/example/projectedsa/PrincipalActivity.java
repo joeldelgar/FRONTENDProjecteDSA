@@ -32,6 +32,24 @@ public class PrincipalActivity extends AppCompatActivity {
         ImageButton store = (ImageButton) findViewById(R.id.store_btn);
         ImageButton edit = (ImageButton) findViewById(R.id.editUser_btn);
         ImageButton friends = (ImageButton) findViewById(R.id.friends_btn);
+        ImageButton stats = (ImageButton) findViewById(R.id.statistics);
+        Button play = (Button) findViewById(R.id.play_btn);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (getApplicationContext(), gameActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        stats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (getApplicationContext(), statsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         friends.setOnClickListener(new View.OnClickListener() {
             @Override
