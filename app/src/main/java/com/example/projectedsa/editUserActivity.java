@@ -61,7 +61,7 @@ public class editUserActivity extends AppCompatActivity {
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<User> call = gerritAPI.updateUser(new CredentialsReq(n, p), userName);
+                Call<User> call = gerritAPI.updateUser(new CredentialsReq(n, p, null), userName);
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
@@ -87,23 +87,23 @@ public class editUserActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String usrName = name.getText().toString();
+
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<User> call = gerritAPI.deleteUser(userName);
+                Call<User> call = gerritAPI.deleteUser(usrName);
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         int variable = response.code();
+                        Log.i("DELETE CODE",":"+variable);
                         if(response.isSuccessful()){
                             User user = response.body();
                             Log.i("DELETE", "OK"+user);
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                             Toast.makeText(editUserActivity.this, "USUARI ELIMINAT CORRECTAMENT", Toast.LENGTH_LONG).show();
-                        }
-                        else{
-                            Toast.makeText(editUserActivity.this, "L'USUARI NO S'HA POGUT ELIMINAR", Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override

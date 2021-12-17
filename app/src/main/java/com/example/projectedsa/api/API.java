@@ -1,28 +1,33 @@
 package com.example.projectedsa.api;
 
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface API {
 
-    public static final String BASE_URL = "http://10.0.2.2:8080"; //147.83.7.206:8080
-    @POST("/dsaApp/user/login")
+    public static final String BASE_URL = "http://147.83.7.206:8080/dsaApp/";
+    @POST("user/logIn")
     Call<User> login(@Body CredentialsReq user);
 
-    @POST("/dsaApp/user/add")
+    @POST("user/register")
     Call<User> register(@Body CredentialsReq user);
 
-    @GET("dsaApp/Game")
-    Call<User> store();
+    @GET("store/itemList")
+    Call<List<Objecte>> getAllItems();
 
-    @PUT("/dsaApp/user/update")
+    @POST("store/buyItem")
+    Call<Objecte> buyItem(@Body StoreCredentials sCr);
+
+    @PUT("user/update")
     Call<User> updateUser(@Body CredentialsReq user, String oldName);
 
-    @DELETE("/dsaApp/user/delete/{name}")
-    Call<User> deleteUser(String name);
+    @DELETE("user/delete/{name}")
+    Call<User> deleteUser(@Path("name") String name);
 
 }

@@ -37,18 +37,18 @@ public class MainActivity extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
-                startActivity(intent);
-                /*String userName = user.getText().toString();
+                String userName = user.getText().toString();
                 String password = psw.getText().toString();
+
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<User> call = gerritAPI.login(new CredentialsReq(userName,password));
+                Call<User> call = gerritAPI.login(new CredentialsReq(userName,password, null));
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         int variable = response.code();
+                        Log.i("LOGIN CODE", ":"+variable);
                         if(response.isSuccessful()){
                             User user =  response.body();
                             Log.i("LOGIN", "OK"+user);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("LOGIN", "ERROR",t);
                         Toast.makeText(MainActivity.this, "Usuari i/o Contrasenya Incorrectes", Toast.LENGTH_LONG).show();
                     }
-                });*/
+                });
             }
         });
 

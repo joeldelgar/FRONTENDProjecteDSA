@@ -14,15 +14,17 @@ import com.example.projectedsa.api.Objecte;
 
 import java.util.List;
 
+import retrofit2.Callback;
+
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
     private List<Objecte> dades;
     private LayoutInflater mInflater;
     private Context context;
 
     //CONSTRUCTOR
-    public ListAdapter (List<Objecte> itemList, Context context) {
-        this.mInflater = LayoutInflater.from(context);
-        this.context = context;
+    public ListAdapter (List<Objecte> itemList, Callback<List<Objecte>> context) {
+        this.mInflater = LayoutInflater.from((Context) context);
+        this.context = (Context) context;
         this.dades = itemList;
     }
 

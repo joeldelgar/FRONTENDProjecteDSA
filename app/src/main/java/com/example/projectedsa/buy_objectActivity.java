@@ -7,8 +7,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.projectedsa.api.API;
 import com.example.projectedsa.api.Objecte;
+import com.example.projectedsa.api.StoreCredentials;
+import com.example.projectedsa.api.User;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class buy_objectActivity extends AppCompatActivity {
 
@@ -46,7 +60,28 @@ public class buy_objectActivity extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
+                setContentView(R.layout.activity_buy_object);
+                Intent intent1 = getIntent();
+                User user = (User)intent1.getSerializableExtra("name");
+                String userName = user.getName();
+                String itemName = objectName.getText().toString();
+
+                Gson gson = new GsonBuilder().setLenient().create();
+                Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
+                API gerritAPI = retrofit.create(API.class);
+                Call<Objecte> call = gerritAPI.buyItem(new StoreCredentials(itemName, userName));
+                call.enqueue(new Callback<Objecte>() {
+                    @Override
+                    public void onResponse(Call<Objecte> call, Response<Objecte> response) {
+                        Toast.makeText(buy_objectActivity.this, "Item: "+itemName+"Adquirit", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Objecte> call, Throwable t) {
+                        Log.e("STORE", "ERROR",t);
+                        Toast.makeText(buy_objectActivity.this, "Error al comprar l'Item", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }
