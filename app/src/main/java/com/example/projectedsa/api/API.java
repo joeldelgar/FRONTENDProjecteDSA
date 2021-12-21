@@ -28,6 +28,6 @@ public interface API {
     Call<User> updateUser(@Body CredentialsReq user, String oldName);
 
     @DELETE("user/delete/{name}")
-    Call<User> deleteUser(@Path("name") String name);
+    Call<Void> deleteUser(@Path("name") String name);
 
 }

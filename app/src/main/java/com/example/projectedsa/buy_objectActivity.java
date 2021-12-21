@@ -38,7 +38,7 @@ public class buy_objectActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Objecte objecte = (Objecte)intent.getSerializableExtra("item");
         if (objecte!=null) {
-            Log.d("JOEL", "a BUY"+objecte.getNom());
+            Log.d("JOEL", "BUY"+objecte.getNom());
         }else{
             Log.d("JOEL", "Objecte NULL");
         }

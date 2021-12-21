@@ -58,9 +58,7 @@ public class storeActivity extends AppCompatActivity {
                 int variable = response.code();
                 Log.i("ItemList CODE",":"+variable);
                 List<Objecte> objecteList =  response.body();
-                Intent intent = new Intent(getApplicationContext(), storeActivity.class);
-                startActivity(intent);
-                ListAdapter listAdapter =new ListAdapter(objecteList, this);
+                ListAdapter listAdapter =new ListAdapter(objecteList, storeActivity.this);
                 RecyclerView recyclerView = findViewById(R.id.ListRecicleView);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(storeActivity.this));

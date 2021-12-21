@@ -92,27 +92,25 @@ public class editUserActivity extends AppCompatActivity {
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<User> call = gerritAPI.deleteUser(usrName);
-                call.enqueue(new Callback<User>() {
+                Call<Void> call = gerritAPI.deleteUser(usrName);
+                call.enqueue(new Callback<Void>() {
                     @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
+                    public void onResponse(Call<Void> call, Response<Void> response) {
                         int variable = response.code();
                         Log.i("DELETE CODE",":"+variable);
                         if(response.isSuccessful()){
-                            User user = response.body();
-                            Log.i("DELETE", "OK"+user);
+                            Log.i("DELETE", "OK");
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                             Toast.makeText(editUserActivity.this, "USUARI ELIMINAT CORRECTAMENT", Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override
-                    public void onFailure(Call<User> call, Throwable t) {
+                    public void onFailure(Call<Void> call, Throwable t) {
                         Log.e("DELETE", "ERROR",t);
                         Toast.makeText(editUserActivity.this, "ERROR AL ELIMINAR USUARI", Toast.LENGTH_LONG).show();
                     }
                 });
-
             }
         });
     }
