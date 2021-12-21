@@ -16,8 +16,6 @@ import com.example.projectedsa.api.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,11 +36,11 @@ public class buy_objectActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Objecte objecte = (Objecte)intent.getSerializableExtra("item");
         if (objecte!=null) {
-            Log.d("JOEL", "BUY"+objecte.getNom());
+            Log.d("JOEL", "BUY"+objecte.getName());
         }else{
             Log.d("JOEL", "Objecte NULL");
         }
-        objectName.setText(objecte.getNom());
+        objectName.setText(objecte.getName());
         TextView description = (TextView) findViewById(R.id.TextObjectDes);
         description.setText(objecte.getDescription());
 

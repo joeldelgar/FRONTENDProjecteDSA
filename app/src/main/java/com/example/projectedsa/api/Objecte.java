@@ -3,22 +3,24 @@ package com.example.projectedsa.api;
 import java.io.Serializable;
 
 public class Objecte implements Serializable {
-    public String nom;
+    public String name;
     public String description;
     public String points;
+    public String avatar;
 
-    public Objecte(String nom, String description, String points) {
-        this.nom = nom;
+    public Objecte(String name, String description, String points, String avatar) {
+        this.name = name;
         this.description = description;
         this.points = points;
+        this.avatar = avatar;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -35,5 +37,13 @@ public class Objecte implements Serializable {
 
     public void setPoints(String points) {
         this.points = points;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

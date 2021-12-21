@@ -14,8 +14,6 @@ import com.example.projectedsa.api.Objecte;
 
 import java.util.List;
 
-import retrofit2.Callback;
-
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
     private List<Objecte> dades;
     private LayoutInflater mInflater;
@@ -62,17 +60,27 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         }
 
         void bindData(final Objecte item){
-            object_name.setText(item.getNom());
+            object_name.setText(item.getName());
             description.setText(item.getDescription());
             object_name.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
 
-                    Log.d("JOEL", item.getNom());
+                    Log.d("Selected Object", item.getName());
                     Intent intent = new Intent(context, buy_objectActivity.class);
                     intent.putExtra("item", item);
                     context.startActivity(intent);
 
 
+                }
+            });
+
+            iconImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("Selected Object", "Nom: "+item.getName());
+                    Intent intent = new Intent(context, buy_objectActivity.class);
+                    intent.putExtra("item", item);
+                    context.startActivity(intent);
                 }
             });
 
