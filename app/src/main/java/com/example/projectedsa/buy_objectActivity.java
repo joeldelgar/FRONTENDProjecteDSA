@@ -1,7 +1,10 @@
 package com.example.projectedsa;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +48,10 @@ public class buy_objectActivity extends AppCompatActivity {
         description.setText(objecte.getDescription());
 
         TextView preu = (TextView) findViewById(R.id.TexObjectPrice);
-        preu.setText(objecte.getPoints());
+        preu.setText(objecte.getCost());
+
+        SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        String userName = sharedPref.getString("User",null);
 
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,23 +66,35 @@ public class buy_objectActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setContentView(R.layout.activity_buy_object);
                 Intent intent1 = getIntent();
-                User user = (User)intent1.getSerializableExtra("name");
-                String userName = user.getName();
+                SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
+                String userName = sharedPref.getString("User",null);
+                Log.i("Name: ", userName);
                 String itemName = objectName.getText().toString();
+                Log.i("Item: ", itemName);
 
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<Objecte> call = gerritAPI.buyItem(new StoreCredentials(itemName, userName));
-                call.enqueue(new Callback<Objecte>() {
+                Call<StoreCredentials> call = gerritAPI.buyItem(new StoreCredentials(itemName, userName));
+                call.enqueue(new Callback<StoreCredentials>() {
                     @Override
-                    public void onResponse(Call<Objecte> call, Response<Objecte> response) {
-                        Toast.makeText(buy_objectActivity.this, "Item: "+itemName+"Adquirit", Toast.LENGTH_LONG).show();
+                    public void onResponse(Call<StoreCredentials> call, Response<StoreCredentials> response) {
+                        int variable = response.code();
+                        Log.i("Buy CODE",":"+variable);
+                        if (variable == 200) {
+                            Intent intent = new Intent(getApplicationContext(), storeActivity.class);
+                            startActivity(intent);
+                            Toast.makeText(buy_objectActivity.this, "Item: " + itemName + "Adquirit", Toast.LENGTH_LONG).show();
+                        }else{
+                            Intent intent = new Intent(getApplicationContext(), storeActivity.class);
+                            startActivity(intent);
+                            Toast.makeText(buy_objectActivity.this, "No tens suficients punts", Toast.LENGTH_LONG).show();
+                        }
                     }
 
                     @Override
-                    public void onFailure(Call<Objecte> call, Throwable t) {
-                        Log.e("STORE", "ERROR",t);
+                    public void onFailure(Call<StoreCredentials> call, Throwable t) {
+                        Log.e("onFailure", "BUY ERROR",t);
                         Toast.makeText(buy_objectActivity.this, "Error al comprar l'Item", Toast.LENGTH_LONG).show();
                     }
                 });

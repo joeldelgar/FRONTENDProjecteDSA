@@ -22,7 +22,7 @@ public interface API {
     Call<List<Objecte>> getAllItems();
 
     @POST("store/buyItem")
-    Call<Objecte> buyItem(@Body StoreCredentials sCr);
+    Call<StoreCredentials> buyItem(@Body StoreCredentials sCr);
 
     @PUT("user/update")
     Call<User> updateUser(@Body CredentialsReq user, String oldName);

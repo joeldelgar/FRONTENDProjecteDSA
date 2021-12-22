@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class Objecte implements Serializable {
     public String name;
     public String description;
-    public String points;
+    public int cost;
     public String avatar;
 
-    public Objecte(String name, String description, String points, String avatar) {
+    public Objecte(String name, String description, int cost, String avatar) {
         this.name = name;
         this.description = description;
-        this.points = points;
+        this.cost = cost;
         this.avatar = avatar;
     }
 
@@ -31,12 +31,12 @@ public class Objecte implements Serializable {
         this.description = description;
     }
 
-    public String getPoints() {
-        return points;
+    public String getCost() {
+        return String.valueOf(cost);
     }
 
-    public void setPoints(String points) {
-        this.points = points;
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
     public String getAvatar() {
