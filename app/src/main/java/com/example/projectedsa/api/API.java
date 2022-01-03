@@ -30,4 +30,15 @@ public interface API {
     @DELETE("user/delete/{name}")
     Call<Void> deleteUser(@Path("name") String name);
 
+    @GET("store/getUserInventory/{userName}")
+    Call<List<Inventory>> getUserInventory(@Path("userName") String name);
+
+    @POST("store/useItem")
+    Call<Void> useItem(@Body StoreCredentials sCr);
+
+    @POST("game/addGame")
+    Call<GameCredentials> addGame(@Body GameCredentials gCr);
+
+
+
 }

@@ -4,26 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
-
-import com.example.projectedsa.api.API;
-import com.example.projectedsa.api.CredentialsReq;
-import com.example.projectedsa.api.Objecte;
-import com.example.projectedsa.api.User;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PrincipalActivity extends AppCompatActivity {
 
@@ -36,6 +19,7 @@ public class PrincipalActivity extends AppCompatActivity {
         ImageButton edit = (ImageButton) findViewById(R.id.editUser_btn);
         ImageButton friends = (ImageButton) findViewById(R.id.friends_btn);
         ImageButton stats = (ImageButton) findViewById(R.id.statistics);
+        ImageButton inventory = (ImageButton) findViewById(R.id.Inventary);
         Button play = (Button) findViewById(R.id.play_btn);
 
         play.setOnClickListener(new View.OnClickListener() {
@@ -77,5 +61,14 @@ public class PrincipalActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        inventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), InventoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

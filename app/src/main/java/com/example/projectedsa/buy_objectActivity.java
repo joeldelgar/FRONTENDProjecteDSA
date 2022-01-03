@@ -39,9 +39,9 @@ public class buy_objectActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Objecte objecte = (Objecte)intent.getSerializableExtra("item");
         if (objecte!=null) {
-            Log.d("JOEL", "BUY"+objecte.getName());
+            Log.d("CONTROL", "BUY"+objecte.getName());
         }else{
-            Log.d("JOEL", "Objecte NULL");
+            Log.d("CONTROL", "Objecte NULL");
         }
         objectName.setText(objecte.getName());
         TextView description = (TextView) findViewById(R.id.TextObjectDes);

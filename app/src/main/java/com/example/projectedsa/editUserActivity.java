@@ -34,7 +34,7 @@ public class editUserActivity extends AppCompatActivity {
 
         Button edit = (Button) findViewById(R.id.Edit_btn);
         Button delete = (Button) findViewById(R.id.deleteUser_btn);
-        ImageButton back = (ImageButton) findViewById(R.id.back_btn);
+        ImageButton back = (ImageButton) findViewById(R.id.bck);
         TextView name = (TextView) findViewById(R.id.userNametxt);
         TextView psw = (TextView) findViewById(R.id.pswUsertxt);
 

@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ProjecteDSA"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".useItemActivity"
+            android:exported="true" />
+        <activity
+            android:name=".InventoryActivity"
+            android:exported="true" />
+        <activity
             android:name=".gameActivity"
             android:exported="true" />
         <activity

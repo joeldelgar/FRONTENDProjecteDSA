@@ -79,7 +79,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/back_btn"
+        android:id="@+id/bck"
         android:layout_width="99dp"
         android:layout_height="86dp"
         android:backgroundTint="#9C27B0"

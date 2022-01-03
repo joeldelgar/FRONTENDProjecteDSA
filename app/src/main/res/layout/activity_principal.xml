@@ -89,4 +89,18 @@
         app:layout_constraintVertical_bias="0.066"
         app:srcCompat="@drawable/character" />
 
+    <ImageButton
+        android:id="@+id/Inventary"
+        android:layout_width="112dp"
+        android:layout_height="103dp"
+        android:backgroundTint="#FF9800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025"
+        app:srcCompat="@drawable/outline_storage_black_24dp"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
