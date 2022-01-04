@@ -41,6 +41,7 @@ public class editUserActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
         String userName = sharedPref.getString("User",null);
         String userPsw = sharedPref.getString("psw",null);
+        String userMail = sharedPref.getString("mail", null);
 
         name.setText(userName);
         psw.setText(userPsw);
@@ -52,24 +53,35 @@ public class editUserActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String n = name.getText().toString();
                 String p = psw.getText().toString();
 
+                Log.i("oldName", "/"+userName);
+                Log.i("newName", "/"+n);
+                Log.i("Psw", "/"+p);
+                Log.i("Mail", "/"+userMail);
+
+
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<User> call = gerritAPI.updateUser(new CredentialsReq(n, p, null), userName);
+                Call<User> call = gerritAPI.updateUser(userName, new CredentialsReq(n, p, userMail));
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         int variable = response.code();
+                        Log.i("UPDATE CODE", "/"+variable);
                         if(response.isSuccessful()){
                             User user = response.body();
                             Log.i("UPDATE", "OK"+user);
                             Toast.makeText(editUserActivity.this, "USUARI EDITAT CORRECTAMENT", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
                         }
                         else{
                             Toast.makeText(editUserActivity.this, "EL NOM D'USUARI INTRODUIT JA EXISTEIX, PORVA AMB UN ALTRE DIFERENT", Toast.LENGTH_LONG).show();
@@ -77,7 +89,7 @@ public class editUserActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        Log.e("REGISTER", "ERROR",t);
+                        Log.e("UPDATE", "ERROR",t);
                         Toast.makeText(editUserActivity.this, "ERROR AL EDITAR USUARI", Toast.LENGTH_LONG).show();
                     }
                 });

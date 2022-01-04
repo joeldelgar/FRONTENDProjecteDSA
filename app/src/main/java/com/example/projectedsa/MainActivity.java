@@ -51,13 +51,21 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("LOGIN CODE", ":"+variable);
                         if(response.isSuccessful()){
                             User user =  response.body();
+                            String userNom = user.getName();
+                            Log.i("Name", ":"+userNom);
+                            String userPsw = user.getPsw();
+                            Log.i("Psw", ":"+userPsw);
+                            String userMail = user.getMail();
+                            Log.i("Mail", ":"+userMail);
+
                             Log.i("LOGIN", "OK"+user);
                             Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
                             startActivity(intent);
                             SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPref.edit();
-                            editor.putString("User", userName);
-                            editor.putString("psw", password);
+                            editor.putString("User", userNom);
+                            editor.putString("psw", userPsw);
+                            editor.putString("mail", userMail);
                             editor.commit();
 
                             Toast.makeText(MainActivity.this, "Usuari i Contrasenya Correctes", Toast.LENGTH_LONG).show();

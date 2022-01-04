@@ -24,8 +24,8 @@ public interface API {
     @POST("store/buyItem")
     Call<StoreCredentials> buyItem(@Body StoreCredentials sCr);
 
-    @PUT("user/update")
-    Call<User> updateUser(@Body CredentialsReq user, String oldName);
+    @PUT("user/update/{name}")
+    Call<User> updateUser(@Path("name") String oldName, @Body CredentialsReq user);
 
     @DELETE("user/delete/{name}")
     Call<Void> deleteUser(@Path("name") String name);
