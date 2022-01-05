@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.projectedsa.api.Objecte;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -62,6 +63,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         void bindData(final Objecte item){
             object_name.setText(item.getName());
             description.setText(item.getDescription());
+            Picasso.get().load("http://147.83.7.206:8080/"+item.getAvatar()).into(iconImage);
             object_name.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
 
@@ -69,8 +71,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
                     Intent intent = new Intent(context, buy_objectActivity.class);
                     intent.putExtra("item", item);
                     context.startActivity(intent);
-
-
                 }
             });
 
