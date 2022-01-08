@@ -56,12 +56,12 @@ public class InventoryActivity extends AppCompatActivity {
             public void onResponse(Call<List<Inventory>> call, Response<List<Inventory>> response) {
                 int variable = response.code();
                 Log.i("InventaryList CODE",":"+variable);
-                List<Inventory> objecteList =  response.body();
-                //ListAdapter listAdapter =new ListAdapter(objecteList, InventoryActivity.this);
+                List<Inventory> inventoryList =  response.body();
+                InventoryListAdapter listAdapter =new InventoryListAdapter(inventoryList, InventoryActivity.this);
                 RecyclerView recyclerView = findViewById(R.id.ListRecicleView);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(InventoryActivity.this));
-                //recyclerView.setAdapter(listAdapter);
+                recyclerView.setAdapter(listAdapter);
             }
 
             @Override

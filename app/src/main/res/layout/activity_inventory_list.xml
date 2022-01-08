@@ -17,8 +17,8 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="406dp"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="6dp">
 
@@ -44,6 +44,15 @@
                 android:layout_toEndOf="@+id/iconImagenView"
                 android:layout_toRightOf="@+id/iconImagenView"
                 android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Object"
+                    android:textSize="38sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Name"

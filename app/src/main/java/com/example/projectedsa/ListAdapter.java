@@ -56,14 +56,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         ViewHolder(View itemView){
             super(itemView);
             iconImage=itemView.findViewById(R.id.iconImagenView);
-            object_name=itemView.findViewById(R.id.NameTextView);
-            description=itemView.findViewById(R.id.DescriptionTextView);
+            object_name=itemView.findViewById(R.id.Name);
+            description=itemView.findViewById(R.id.Description);
         }
 
         void bindData(final Objecte item){
             object_name.setText(item.getName());
             description.setText(item.getDescription());
             Picasso.get().load("http://147.83.7.206:8080/"+item.getAvatar()).into(iconImage);
+
             object_name.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
 

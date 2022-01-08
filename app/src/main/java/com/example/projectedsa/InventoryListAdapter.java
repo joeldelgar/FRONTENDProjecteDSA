@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectedsa.api.Inventory;
-import com.example.projectedsa.api.Objecte;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class InventoryListAdapter extends RecyclerView.Adapter<InventoryListAdap
 
     @Override
     public InventoryListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View v = mInflater.inflate(R.layout.activity_object_list, null);
+        View v = mInflater.inflate(R.layout.activity_inventory_list, null);
         return new InventoryListAdapter.ViewHolder(v);
     }
 
@@ -52,24 +52,27 @@ public class InventoryListAdapter extends RecyclerView.Adapter<InventoryListAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView iconImage;
-        TextView object_name, quantity;
+        TextView object_name, quantity, description;
 
         ViewHolder(View itemView){
             super(itemView);
             iconImage=itemView.findViewById(R.id.iconImagenView);
-            object_name=itemView.findViewById(R.id.NameTextView);
-            quantity=itemView.findViewById(R.id.DescriptionTextView);
+            object_name=itemView.findViewById(R.id.Name);
+            description = itemView.findViewById(R.id.Description);
+            quantity=itemView.findViewById(R.id.quantity);
         }
 
         void bindData(final Inventory inventory){
-            //object_name.setText(inventory.);
-            //quantity.setText(item.getDescription());
+            object_name.setText(inventory.getItemName());
+            description.setText(inventory.getItemDescription());
+            quantity.setText(inventory.getItemQuantity());
+            Picasso.get().load("http://147.83.7.206:8080/"+inventory.getItemAvatar()).into(iconImage);
             object_name.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
 
-                    //Log.d("Selected Object", item.getName());
+                    Log.d("Selected Object", inventory.getItemName());
                     Intent intent = new Intent(context, buy_objectActivity.class);
-                    //intent.putExtra("item", item);
+                    //intent.putExtra("inventory", );
                     context.startActivity(intent);
 
 
@@ -79,7 +82,7 @@ public class InventoryListAdapter extends RecyclerView.Adapter<InventoryListAdap
             iconImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //Log.d("Selected Object", "Nom: "+item.getName());
+                    Log.d("Selected Object", "Nom: "+inventory.getItemName());
                     Intent intent = new Intent(context, buy_objectActivity.class);
                     //intent.putExtra("item", item);
                     context.startActivity(intent);
