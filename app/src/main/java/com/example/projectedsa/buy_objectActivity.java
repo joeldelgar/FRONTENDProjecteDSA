@@ -75,16 +75,18 @@ public class buy_objectActivity extends AppCompatActivity {
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<StoreCredentials> call = gerritAPI.buyItem(new StoreCredentials(itemName, userName));
-                call.enqueue(new Callback<StoreCredentials>() {
+                Call<Objecte> call = gerritAPI.buyItem(itemName, new StoreCredentials(itemName, userName));
+                call.enqueue(new Callback<Objecte>() {
                     @Override
-                    public void onResponse(Call<StoreCredentials> call, Response<StoreCredentials> response) {
+                    public void onResponse(Call<Objecte> call, Response<Objecte> response) {
                         int variable = response.code();
+                        Objecte item = response.body();
+                        String itemNom = item.getName();
                         Log.i("Buy CODE",":"+variable);
                         if (variable == 200) {
                             Intent intent = new Intent(getApplicationContext(), storeActivity.class);
                             startActivity(intent);
-                            Toast.makeText(buy_objectActivity.this, "Item: " + itemName + "Adquirit", Toast.LENGTH_LONG).show();
+                            Toast.makeText(buy_objectActivity.this, "Item: " + itemNom + "Adquirit", Toast.LENGTH_LONG).show();
                         }else{
                             Intent intent = new Intent(getApplicationContext(), storeActivity.class);
                             startActivity(intent);
@@ -93,7 +95,7 @@ public class buy_objectActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<StoreCredentials> call, Throwable t) {
+                    public void onFailure(Call<Objecte> call, Throwable t) {
                         Log.e("onFailure", "BUY ERROR",t);
                         Toast.makeText(buy_objectActivity.this, "Error al comprar l'Item", Toast.LENGTH_LONG).show();
                     }

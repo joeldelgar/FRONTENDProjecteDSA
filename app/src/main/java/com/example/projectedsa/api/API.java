@@ -12,6 +12,7 @@ import retrofit2.http.Path;
 public interface API {
 
     public static final String BASE_URL = "http://147.83.7.206:8080/dsaApp/";
+
     @POST("user/logIn")
     Call<User> login(@Body CredentialsReq user);
 
@@ -21,8 +22,8 @@ public interface API {
     @GET("store/itemList")
     Call<List<Objecte>> getAllItems();
 
-    @POST("store/buyItem")
-    Call<StoreCredentials> buyItem(@Body StoreCredentials sCr);
+    @PUT("store/buyItem/{itemName}")
+    Call<Objecte> buyItem(@Path("itemName") String itemName, @Body StoreCredentials sCr);
 
     @PUT("user/update/{name}")
     Call<User> updateUser(@Path("name") String oldName, @Body CredentialsReq user);
