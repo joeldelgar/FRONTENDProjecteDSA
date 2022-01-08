@@ -28,9 +28,6 @@
             android:name=".statsActivity"
             android:exported="true" />
         <activity
-            android:name=".friendsActivity"
-            android:exported="true" />
-        <activity
             android:name=".registerActivity"
             android:exported="true" />
         <activity
