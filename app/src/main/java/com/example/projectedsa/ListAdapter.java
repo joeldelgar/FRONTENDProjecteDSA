@@ -55,9 +55,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
         ViewHolder(View itemView){
             super(itemView);
-            iconImage=itemView.findViewById(R.id.iconImagenView);
-            object_name=itemView.findViewById(R.id.Name);
-            description=itemView.findViewById(R.id.Description);
+            iconImage=itemView.findViewById(R.id.imageAvatar);
+            object_name=itemView.findViewById(R.id.NameObject);
+            description=itemView.findViewById(R.id.DescriptionObject);
         }
 
         void bindData(final Objecte item){
@@ -74,6 +74,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
                     context.startActivity(intent);
                 }
             });
+
 
             iconImage.setOnClickListener(new View.OnClickListener() {
                 @Override

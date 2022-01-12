@@ -34,6 +34,7 @@ public class InventoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
         ImageButton exit = (ImageButton) findViewById(R.id.exit);
+        init();
 
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +48,7 @@ public class InventoryActivity extends AppCompatActivity {
     public void init(){
         SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
         String userName = sharedPref.getString("User",null);
+
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
@@ -57,11 +59,17 @@ public class InventoryActivity extends AppCompatActivity {
                 int variable = response.code();
                 Log.i("InventaryList CODE",":"+variable);
                 List<Inventory> inventoryList =  response.body();
+                if(inventoryList == null){
+                    Toast.makeText(InventoryActivity.this, "No tens res al inventari", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
+                    startActivity(intent);
+                }
                 InventoryListAdapter listAdapter =new InventoryListAdapter(inventoryList, InventoryActivity.this);
-                RecyclerView recyclerView = findViewById(R.id.ListRecicleView);
-                recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(InventoryActivity.this));
-                recyclerView.setAdapter(listAdapter);
+                RecyclerView recyclerView2 = findViewById(R.id.recyclerView2);
+                recyclerView2.setHasFixedSize(true);
+                recyclerView2.setLayoutManager(new LinearLayoutManager(InventoryActivity.this));
+                recyclerView2.setAdapter(listAdapter);
+                findViewById(R.id.progressBar).setVisibility(View.GONE);
             }
 
             @Override

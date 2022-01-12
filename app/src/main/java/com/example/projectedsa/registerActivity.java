@@ -64,7 +64,7 @@ public class registerActivity extends AppCompatActivity {
                         if(response.isSuccessful()){
                             User user = response.body();
                             Log.i("REGISTER", "OK"+user);
-                            Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
                             startActivity(intent);
                             SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPref.edit();

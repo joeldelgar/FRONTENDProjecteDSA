@@ -63,6 +63,7 @@ public class storeActivity extends AppCompatActivity {
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(storeActivity.this));
                 recyclerView.setAdapter(listAdapter);
+                findViewById(R.id.progressBar2).setVisibility(View.GONE);
             }
 
             @Override

@@ -23,9 +23,9 @@
             android:padding="6dp">
 
             <ImageView
-                android:id="@+id/iconImagenView"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:id="@+id/imageAvatar"
+                android:layout_width="122dp"
+                android:layout_height="147dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_gravity="center"
@@ -41,8 +41,8 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="2dp"
-                android:layout_toEndOf="@+id/iconImagenView"
-                android:layout_toRightOf="@+id/iconImagenView"
+                android:layout_toEndOf="@+id/imageAvatar"
+                android:layout_toRightOf="@+id/imageAvatar"
                 android:orientation="vertical">
 
                 <TextView
@@ -50,12 +50,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:text="Object"
+                    android:text="Quantity"
                     android:textSize="38sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/Name"
+                    android:id="@+id/NameObject"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
@@ -64,7 +64,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/Description"
+                    android:id="@+id/DescriptionObject"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Description"

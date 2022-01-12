@@ -1,8 +1,6 @@
 package com.example.projectedsa;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class InventoryListAdapter extends RecyclerView.Adapter<InventoryListAdapter.ViewHolder>{
-    private List<Inventory> dades;
+    private List<Inventory> dades2;
     private LayoutInflater mInflater;
     private Context context;
 
@@ -25,7 +23,7 @@ public class InventoryListAdapter extends RecyclerView.Adapter<InventoryListAdap
     public InventoryListAdapter(List<Inventory> inventoryList, Context context) {
         this.mInflater = LayoutInflater.from((Context) context);
         this.context = (Context) context;
-        this.dades = inventoryList;
+        this.dades2 = inventoryList;
     }
 
 
@@ -36,18 +34,18 @@ public class InventoryListAdapter extends RecyclerView.Adapter<InventoryListAdap
     }
 
     @Override
-    public void onBindViewHolder(final InventoryListAdapter.ViewHolder holder, final int position) {
-        holder.bindData(dades.get(position));
+    public void onBindViewHolder(final InventoryListAdapter.ViewHolder holder, final int position2) {
+        holder.bindData(dades2.get(position2));
     }
 
 
     @Override
     public int getItemCount() {
-        return dades.size();
+        return dades2.size();
     }
 
     public void setItems(List<Inventory> items){
-        dades=items;
+        dades2=items;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -56,9 +54,9 @@ public class InventoryListAdapter extends RecyclerView.Adapter<InventoryListAdap
 
         ViewHolder(View itemView){
             super(itemView);
-            iconImage=itemView.findViewById(R.id.iconImagenView);
-            object_name=itemView.findViewById(R.id.Name);
-            description = itemView.findViewById(R.id.Description);
+            iconImage=itemView.findViewById(R.id.imageAvatar);
+            object_name=itemView.findViewById(R.id.NameObject);
+            description = itemView.findViewById(R.id.DescriptionObject);
             quantity=itemView.findViewById(R.id.quantity);
         }
 
@@ -67,28 +65,6 @@ public class InventoryListAdapter extends RecyclerView.Adapter<InventoryListAdap
             description.setText(inventory.getItemDescription());
             quantity.setText(inventory.getItemQuantity());
             Picasso.get().load("http://147.83.7.206:8080/"+inventory.getItemAvatar()).into(iconImage);
-            object_name.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-
-                    Log.d("Selected Object", inventory.getItemName());
-                    Intent intent = new Intent(context, buy_objectActivity.class);
-                    //intent.putExtra("inventory", );
-                    context.startActivity(intent);
-
-
-                }
-            });
-
-            iconImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d("Selected Object", "Nom: "+inventory.getItemName());
-                    Intent intent = new Intent(context, buy_objectActivity.class);
-                    //intent.putExtra("item", item);
-                    context.startActivity(intent);
-                }
-            });
-
         }
 
 

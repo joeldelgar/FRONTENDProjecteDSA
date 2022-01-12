@@ -31,7 +31,7 @@ public interface API {
     @DELETE("user/delete/{name}")
     Call<Void> deleteUser(@Path("name") String name);
 
-    @GET("store/getUserInventory/{userName}")
+    @GET("store/userInventoryList/{userName}")
     Call<List<Inventory>> getUserInventory(@Path("userName") String name);
 
     @POST("store/useItem")
