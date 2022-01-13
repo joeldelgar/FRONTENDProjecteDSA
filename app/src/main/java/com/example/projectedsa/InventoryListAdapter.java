@@ -63,10 +63,8 @@ public class InventoryListAdapter extends RecyclerView.Adapter<InventoryListAdap
         void bindData(final Inventory inventory){
             object_name.setText(inventory.getItemName());
             description.setText(inventory.getItemDescription());
-            quantity.setText(inventory.getItemQuantity());
+            quantity.setText("x"+inventory.getItemQuantity());
             Picasso.get().load("http://147.83.7.206:8080/"+inventory.getItemAvatar()).into(iconImage);
         }
-
-
     }
 }

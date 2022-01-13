@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A9F4"
+    android:background="@drawable/fons2"
     tools:context=".editUserActivity">
 
     <Button
         android:id="@+id/Edit_btn"
         android:layout_width="382dp"
         android:layout_height="57dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#2196F3"
         android:text="EDIT USER"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -25,6 +27,8 @@
         android:id="@+id/deleteUser_btn"
         android:layout_width="382dp"
         android:layout_height="57dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#2196F3"
         android:text=" DELETE USER"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -41,10 +45,9 @@
         android:layout_height="108dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135"
+        app:layout_constraintVertical_bias="0.096"
         app:srcCompat="@drawable/outline_account_circle_black_24dp" />
 
     <EditText
@@ -82,7 +85,7 @@
         android:id="@+id/bck"
         android:layout_width="99dp"
         android:layout_height="86dp"
-        android:backgroundTint="#9C27B0"
+        android:backgroundTint="#673AB7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.935"

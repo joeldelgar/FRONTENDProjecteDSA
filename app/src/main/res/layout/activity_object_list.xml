@@ -19,6 +19,7 @@
         <RelativeLayout
             android:layout_width="406dp"
             android:layout_height="match_parent"
+            android:background="#8BC34A"
             android:orientation="horizontal"
             android:padding="6dp">
 
@@ -51,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:text="Object"
+                    android:textColor="#070707"
                     android:textSize="38sp"
                     android:textStyle="bold" />
 
@@ -59,6 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Description"
+                    android:textColor="#0E0E0E"
                     android:textSize="28sp" />
             </LinearLayout>
 

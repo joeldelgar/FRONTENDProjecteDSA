@@ -10,16 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ProjecteDSA"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".SplashActivity"
-            android:exported="true" />
-        <activity
-            android:name=".useInventoryAcitvity"
-            android:exported="true" />
-        <activity
-            android:name=".useItemActivity"
             android:exported="true" />
         <activity
             android:name=".InventoryActivity"

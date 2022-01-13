@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BCD4"
+    android:background="@drawable/fons2"
     tools:context=".storeActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -14,7 +14,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="1dp"
-        android:background="#00BCD4"
+        android:background="@drawable/fons2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

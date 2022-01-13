@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2196F3"
+    android:background="@drawable/fons"
     tools:context=".InventoryActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -24,7 +24,7 @@
         android:id="@+id/exit"
         android:layout_width="122dp"
         android:layout_height="114dp"
-        android:backgroundTint="#9C27B0"
+        android:backgroundTint="#2196F3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.944"

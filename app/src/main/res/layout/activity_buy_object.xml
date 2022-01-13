@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BCD4"
+    android:background="@drawable/fons2"
     tools:context=".buy_objectActivity">
 
     <TextView
@@ -12,8 +12,9 @@
         android:layout_width="212dp"
         android:layout_height="34dp"
         android:text="Object: "
-        android:textColor="#F8F4F4"
+        android:textColor="#101010"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.08"
@@ -27,6 +28,7 @@
         android:layout_height="57dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="280dp"
+        android:background="@color/purple_700"
         android:text="Exit"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,25 +36,26 @@
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.856" />
+        app:layout_constraintVertical_bias="0.896" />
 
     <Button
         android:id="@+id/buy_btn"
         android:layout_width="405dp"
         android:layout_height="57dp"
+        android:background="@color/purple_700"
         android:text="Buy"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.771" />
+        app:layout_constraintVertical_bias="0.784" />
 
     <TextView
         android:id="@+id/TextObjectName"
         android:layout_width="338dp"
         android:layout_height="56dp"
-        android:textColor="#FBF7F7"
+        android:textColor="#090909"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,8 +69,9 @@
         android:layout_width="212dp"
         android:layout_height="34dp"
         android:text="Description:"
-        android:textColor="#FAF9F9"
+        android:textColor="#0B0A0A"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.095"
@@ -81,7 +85,7 @@
         android:layout_height="116dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="58dp"
-        android:textColor="#F6F3F3"
+        android:textColor="#0B0A0A"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,9 +99,9 @@
         android:layout_width="212dp"
         android:layout_height="34dp"
         android:text="Price:"
-        android:textColor="#FAF7F7"
+        android:textColor="#0B0A0A"
         android:textSize="20sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.095"
@@ -109,7 +113,7 @@
         android:id="@+id/TexObjectPrice"
         android:layout_width="341dp"
         android:layout_height="82dp"
-        android:textColor="#FBFAFA"
+        android:textColor="#0E0E0E"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
