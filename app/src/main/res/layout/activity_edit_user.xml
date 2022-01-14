@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fons2"
+    android:background="@drawable/fons3"
     tools:context=".editUserActivity">
 
     <Button
         android:id="@+id/Edit_btn"
-        android:layout_width="382dp"
+        android:layout_width="350dp"
         android:layout_height="57dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#2196F3"
@@ -21,11 +21,11 @@
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648" />
+        app:layout_constraintVertical_bias="0.664" />
 
     <Button
         android:id="@+id/deleteUser_btn"
-        android:layout_width="382dp"
+        android:layout_width="350dp"
         android:layout_height="57dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#2196F3"
@@ -34,10 +34,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759" />
+        app:layout_constraintVertical_bias="0.795" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -52,8 +52,8 @@
 
     <EditText
         android:id="@+id/userNametxt"
-        android:layout_width="377dp"
-        android:layout_height="71dp"
+        android:layout_width="350dp"
+        android:layout_height="67dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="#FBF9F9"
@@ -68,8 +68,8 @@
 
     <EditText
         android:id="@+id/pswUsertxt"
-        android:layout_width="377dp"
-        android:layout_height="71dp"
+        android:layout_width="350dp"
+        android:layout_height="67dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="#F6F4F4"
@@ -83,15 +83,15 @@
 
     <ImageButton
         android:id="@+id/bck"
-        android:layout_width="99dp"
-        android:layout_height="86dp"
+        android:layout_width="82dp"
+        android:layout_height="64dp"
         android:backgroundTint="#673AB7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975"
+        app:layout_constraintVertical_bias="0.959"
         app:srcCompat="@drawable/outline_keyboard_return_white_24dp"
         tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
