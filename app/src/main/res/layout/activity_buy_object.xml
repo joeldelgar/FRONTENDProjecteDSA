@@ -12,38 +12,40 @@
         android:layout_width="212dp"
         android:layout_height="34dp"
         android:text="Object: "
-        android:textColor="#101010"
+        android:textColor="#F8F5F5"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <Button
         android:id="@+id/exit_btn"
-        android:layout_width="405dp"
+        android:layout_width="350dp"
         android:layout_height="57dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="280dp"
-        android:background="@color/purple_700"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#3F51B5"
         android:text="Exit"
+        android:textColor="#FAF6F6"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896" />
+        app:layout_constraintVertical_bias="0.93" />
 
     <Button
         android:id="@+id/buy_btn"
-        android:layout_width="405dp"
+        android:layout_width="350dp"
         android:layout_height="57dp"
-        android:background="@color/purple_700"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#3F51B5"
         android:text="Buy"
+        android:textColor="#F6F3F3"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,72 +55,70 @@
 
     <TextView
         android:id="@+id/TextObjectName"
-        android:layout_width="338dp"
-        android:layout_height="56dp"
-        android:textColor="#090909"
+        android:layout_width="309dp"
+        android:layout_height="45dp"
+        android:textColor="#F4EFEF"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintVertical_bias="0.202" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="212dp"
         android:layout_height="34dp"
         android:text="Description:"
-        android:textColor="#0B0A0A"
+        android:textColor="#FBF6F6"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.321" />
 
     <TextView
         android:id="@+id/TextObjectDes"
-        android:layout_width="337dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="58dp"
-        android:textColor="#0B0A0A"
+        android:layout_width="307dp"
+        android:layout_height="89dp"
+        android:textColor="#F4EFEF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419" />
+        app:layout_constraintVertical_bias="0.401" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="212dp"
         android:layout_height="34dp"
         android:text="Price:"
-        android:textColor="#0B0A0A"
+        android:textColor="#F8F4F4"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.553" />
 
     <TextView
         android:id="@+id/TexObjectPrice"
-        android:layout_width="341dp"
-        android:layout_height="82dp"
-        android:textColor="#0E0E0E"
+        android:layout_width="309dp"
+        android:layout_height="58dp"
+        android:textColor="#F4EFEF"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647" />
+        app:layout_constraintVertical_bias="0.624" />
 </androidx.constraintlayout.widget.ConstraintLayout>

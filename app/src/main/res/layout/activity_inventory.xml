@@ -9,28 +9,28 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
-        android:layout_width="400dp"
-        android:layout_height="613dp"
+        android:layout_width="344dp"
+        android:layout_height="557dp"
         android:layout_marginStart="2dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.508" />
+        app:layout_constraintVertical_bias="0.418" />
 
     <ImageButton
         android:id="@+id/exit"
-        android:layout_width="122dp"
-        android:layout_height="114dp"
-        android:backgroundTint="#2196F3"
+        android:layout_width="118dp"
+        android:layout_height="76dp"
+        android:backgroundTint="#673AB7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintHorizontal_bias="0.883"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.974"
+        app:layout_constraintVertical_bias="0.96"
         app:srcCompat="@drawable/outline_keyboard_return_white_24dp"
         tools:ignore="SpeakableTextPresentCheck" />
 
