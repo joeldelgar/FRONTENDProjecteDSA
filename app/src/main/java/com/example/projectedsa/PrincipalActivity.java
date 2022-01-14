@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.unity3d.player.UnityPlayerActivity;
+
 public class PrincipalActivity extends AppCompatActivity {
 
     @Override
@@ -21,10 +23,11 @@ public class PrincipalActivity extends AppCompatActivity {
         ImageButton inventory = (ImageButton) findViewById(R.id.Inventary);
         Button play = (Button) findViewById(R.id.play_btn);
 
+
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), gameActivity.class);
+                Intent intent = new Intent (getApplicationContext(), UnityPlayerActivity.class);
                 startActivity(intent);
             }
         });
