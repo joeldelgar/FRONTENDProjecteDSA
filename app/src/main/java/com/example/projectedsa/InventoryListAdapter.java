@@ -55,8 +55,8 @@ public class InventoryListAdapter extends RecyclerView.Adapter<InventoryListAdap
         ViewHolder(View itemView){
             super(itemView);
             iconImage=itemView.findViewById(R.id.imageAvatar);
-            object_name=itemView.findViewById(R.id.NameObject);
-            description = itemView.findViewById(R.id.DescriptionObject);
+            object_name=itemView.findViewById(R.id.UserNameGame);
+            description = itemView.findViewById(R.id.PointsGame);
             quantity=itemView.findViewById(R.id.quantity);
         }
 
