@@ -8,12 +8,12 @@ android {
     defaultConfig {
         applicationId "com.example.projectedsa"
         minSdk 26
-        targetSdk 30
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
-        ndk{
-            abiFilters "armeabi-v7a", "arm64-vBa"
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
         }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -32,17 +32,16 @@ android {
 }
 
 dependencies {
-    //Unity
-    implementation files('../libs/unityLibrary-release.aar')
-
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    // retrofit
+    //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.squareup.picasso:picasso:2.8'
+    //Unity
+    implementation files('../libs/unityLibrary-release.aar')
 }

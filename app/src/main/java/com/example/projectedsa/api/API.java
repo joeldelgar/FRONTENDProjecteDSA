@@ -37,6 +37,4 @@ public interface API {
     @GET ("game/byPoints")
     Call<List<GameCredentials>> getGamesByPoints();
 
-
-
 }

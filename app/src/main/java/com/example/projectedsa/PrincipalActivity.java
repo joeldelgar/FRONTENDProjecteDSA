@@ -27,7 +27,7 @@ public class PrincipalActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), UnityPlayerActivity.class);
+                Intent intent = new Intent (getApplicationContext(), emptyActivity.class);
                 startActivity(intent);
             }
         });
