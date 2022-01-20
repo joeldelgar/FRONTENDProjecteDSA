@@ -11,9 +11,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.projectedsa.api.API;
-import com.example.projectedsa.api.GameCredentials;
-import com.example.projectedsa.api.Objecte;
+import com.example.projectedsa.adapters.GamesAdapter;
+import com.example.projectedsa.connections.API;
+import com.example.projectedsa.models.Game;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -49,13 +49,13 @@ public class statsActivity extends AppCompatActivity {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
-        Call<List<GameCredentials>> call = gerritAPI.getGamesByPoints();
-        call.enqueue(new Callback<List<GameCredentials>>() {
+        Call<List<Game>> call = gerritAPI.getGamesByPoints();
+        call.enqueue(new Callback<List<Game>>() {
             @Override
-            public void onResponse(Call<List<GameCredentials>> call, Response<List<GameCredentials>> response) {
+            public void onResponse(Call<List<Game>> call, Response<List<Game>> response) {
                 int variable = response.code();
                 Log.i("GamesByPoints CODE",":"+variable);
-                List<GameCredentials> gamesList =  response.body();
+                List<Game> gamesList =  response.body();
                 GamesAdapter listAdapter =new GamesAdapter(gamesList, statsActivity.this);
                 RecyclerView recyclerView3 = findViewById(R.id.GamesRecyclerView);
                 recyclerView3.setHasFixedSize(true);
@@ -65,7 +65,7 @@ public class statsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<GameCredentials>> call, Throwable t) {
+            public void onFailure(Call<List<Game>> call, Throwable t) {
                 Log.e("GameList", "ERROR",t);
                 Toast.makeText(statsActivity.this, "Error al carregar la tenda", Toast.LENGTH_LONG).show();
             }

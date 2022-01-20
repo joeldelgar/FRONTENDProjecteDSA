@@ -1,24 +1,21 @@
 package com.example.projectedsa;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.projectedsa.adapters.InventoryListAdapter;
 import com.example.projectedsa.connections.API;
 import com.example.projectedsa.models.Inventory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.unity3d.player.UnityPlayerActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,25 +24,20 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class InventoryActivity extends AppCompatActivity {
+public class launcherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inventory);
-        ImageButton exit = (ImageButton) findViewById(R.id.exit);
-        init();
+        setContentView(R.layout.activity_launcher);
 
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
-                startActivity(intent);
-            }
-        });
+        //getUserInventoryList();
+
+        Intent intent = new Intent (getApplicationContext(), UnityPlayerActivity.class);
+        startActivity(intent);
     }
 
-    public void init(){
+    /*public void getUserInventoryList(){
         SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
         String userName = sharedPref.getString("User",null);
 
@@ -57,26 +49,26 @@ public class InventoryActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Inventory>> call, Response<List<Inventory>> response) {
                 int variable = response.code();
-                Log.i("InventaryList CODE",":"+variable);
+                Log.i("InventoryList CODE",":"+variable);
                 List<Inventory> inventoryList =  response.body();
                 if(inventoryList == null){
-                    Toast.makeText(InventoryActivity.this, "No tens res al inventari", Toast.LENGTH_LONG).show();
+                    Toast.makeText(launcherActivity.this, "No tens res al inventari", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
                     startActivity(intent);
+                } else {
+                    Intent intent = new Intent (getApplicationContext(), UnityPlayerActivity.class);
+                    intent.putExtra("UserInventoryList", (Serializable) inventoryList);
+                    startActivity(intent);
                 }
-                InventoryListAdapter listAdapter =new InventoryListAdapter(inventoryList, InventoryActivity.this);
-                RecyclerView recyclerView2 = findViewById(R.id.recyclerView2);
-                recyclerView2.setHasFixedSize(true);
-                recyclerView2.setLayoutManager(new LinearLayoutManager(InventoryActivity.this));
-                recyclerView2.setAdapter(listAdapter);
-                findViewById(R.id.progressBar).setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<List<Inventory>> call, Throwable t) {
-                Log.e("STORE", "ERROR",t);
-                Toast.makeText(InventoryActivity.this, "Error al carregar la tenda", Toast.LENGTH_LONG).show();
+                Log.e("UserInventoryList", "ERROR",t);
+                Toast.makeText(launcherActivity.this, "Error getUserInventoryList", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
+                startActivity(intent);
             }
         });
-    }
+    }*/
 }

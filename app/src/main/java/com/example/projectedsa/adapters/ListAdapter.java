@@ -1,4 +1,4 @@
-package com.example.projectedsa;
+package com.example.projectedsa.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,18 +10,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.projectedsa.api.Objecte;
+
+import com.example.projectedsa.R;
+import com.example.projectedsa.activities.buy_objectActivity;
+import com.example.projectedsa.models.Item;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
-    private List<Objecte> dades;
+    private List<Item> dades;
     private LayoutInflater mInflater;
     private Context context;
 
     //CONSTRUCTOR
-    public ListAdapter (List<Objecte> itemList, Context context) {
+    public ListAdapter (List<Item> itemList, Context context) {
         this.mInflater = LayoutInflater.from((Context) context);
         this.context = (Context) context;
         this.dades = itemList;
@@ -45,7 +48,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         return dades.size();
     }
 
-    public void setItems(List<Objecte> items){
+    public void setItems(List<Item> items){
         dades=items;
     }
 
@@ -60,7 +63,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
             description=itemView.findViewById(R.id.PointsGame);
         }
 
-        void bindData(final Objecte item){
+        void bindData(final Item item){
             object_name.setText(item.getName());
             description.setText(item.getDescription());
             Picasso.get().load("http://147.83.7.206:8080/"+item.getAvatar()).into(iconImage);

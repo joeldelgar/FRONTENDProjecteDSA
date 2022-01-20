@@ -1,14 +1,14 @@
-package com.example.projectedsa.api;
+package com.example.projectedsa.models;
 
 import java.io.Serializable;
 
-public class Objecte implements Serializable {
+public class Item implements Serializable {
     public String name;
     public String description;
     public int cost;
     public String avatar;
 
-    public Objecte(String name, String description, int cost, String avatar) {
+    public Item(String name, String description, int cost, String avatar) {
         this.name = name;
         this.description = description;
         this.cost = cost;

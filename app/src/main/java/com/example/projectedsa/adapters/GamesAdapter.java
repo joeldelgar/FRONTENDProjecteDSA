@@ -1,4 +1,4 @@
-package com.example.projectedsa;
+package com.example.projectedsa.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,18 +8,19 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projectedsa.api.GameCredentials;
+import com.example.projectedsa.R;
+import com.example.projectedsa.models.Game;
 
 
 import java.util.List;
 
 public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder>{
-    private List<GameCredentials> dades3;
+    private List<Game> dades3;
     private LayoutInflater mInflater;
     private Context context;
 
     //CONSTRUCTOR
-    public GamesAdapter(List<GameCredentials> gamesList, Context context) {
+    public GamesAdapter(List<Game> gamesList, Context context) {
         this.mInflater = LayoutInflater.from((Context) context);
         this.context = (Context) context;
         this.dades3 = gamesList;
@@ -41,7 +42,7 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder>{
         return dades3.size();
     }
 
-    public void setItems(List<GameCredentials> items){
+    public void setItems(List<Game> items){
         dades3=items;
     }
 
@@ -55,7 +56,7 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder>{
             pointsGame = itemView.findViewById(R.id.PointsGame);
         }
 
-        void bindData(final GameCredentials games){
+        void bindData(final Game games){
             userNameGame.setText(games.getUserName());
             pointsGame.setText("x"+games.getPoints());
         }

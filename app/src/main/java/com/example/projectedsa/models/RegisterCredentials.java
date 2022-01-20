@@ -1,11 +1,11 @@
-package com.example.projectedsa.api;
+package com.example.projectedsa.models;
 
-public class CredentialsReq {
+public class RegisterCredentials {
     private String name;
     private String password;
     private String mail;
 
-    public CredentialsReq(String name, String password, String mail) {
+    public RegisterCredentials(String name, String password, String mail) {
         this.name = name;
         this.password = password;
         this.mail = mail;

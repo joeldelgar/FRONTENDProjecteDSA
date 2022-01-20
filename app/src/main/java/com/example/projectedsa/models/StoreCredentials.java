@@ -1,4 +1,4 @@
-package com.example.projectedsa.api;
+package com.example.projectedsa.models;
 
 public class StoreCredentials {
     private String itemName;

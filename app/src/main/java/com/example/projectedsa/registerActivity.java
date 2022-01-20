@@ -13,9 +13,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.projectedsa.api.API;
-import com.example.projectedsa.api.CredentialsReq;
-import com.example.projectedsa.api.User;
+import com.example.projectedsa.connections.API;
+import com.example.projectedsa.models.RegisterCredentials;
+import com.example.projectedsa.models.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -55,7 +55,7 @@ public class registerActivity extends AppCompatActivity {
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<User> call = gerritAPI.register(new CredentialsReq(userName,password, mail));
+                Call<User> call = gerritAPI.register(new RegisterCredentials(userName,password, mail));
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {

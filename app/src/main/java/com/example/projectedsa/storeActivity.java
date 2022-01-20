@@ -5,22 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.projectedsa.api.API;
-import com.example.projectedsa.api.Objecte;
+import com.example.projectedsa.adapters.ListAdapter;
+import com.example.projectedsa.connections.API;
+import com.example.projectedsa.models.Item;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -51,14 +48,14 @@ public class storeActivity extends AppCompatActivity {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
-        Call<List<Objecte>> call = gerritAPI.getAllItems();
-        call.enqueue(new Callback<List<Objecte>>() {
+        Call<List<Item>> call = gerritAPI.getAllItems();
+        call.enqueue(new Callback<List<Item>>() {
             @Override
-            public void onResponse(Call<List<Objecte>> call, Response<List<Objecte>> response) {
+            public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
                 int variable = response.code();
                 Log.i("ItemList CODE",":"+variable);
-                List<Objecte> objecteList =  response.body();
-                ListAdapter listAdapter =new ListAdapter(objecteList, storeActivity.this);
+                List<Item> itemList =  response.body();
+                ListAdapter listAdapter =new ListAdapter(itemList, storeActivity.this);
                 RecyclerView recyclerView = findViewById(R.id.ListRecicleView);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(storeActivity.this));
@@ -67,7 +64,7 @@ public class storeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Objecte>> call, Throwable t) {
+            public void onFailure(Call<List<Item>> call, Throwable t) {
                 Log.e("STORE", "ERROR",t);
                 Toast.makeText(storeActivity.this, "Error al carregar la tenda", Toast.LENGTH_LONG).show();
             }

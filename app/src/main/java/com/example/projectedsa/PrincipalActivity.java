@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.unity3d.player.UnityPlayerActivity;
+import com.example.projectedsa.activities.editUserActivity;
 
 public class PrincipalActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class PrincipalActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), emptyActivity.class);
+                Intent intent = new Intent (getApplicationContext(), launcherActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,4 +1,4 @@
-package com.example.projectedsa;
+package com.example.projectedsa.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projectedsa.api.Inventory;
+import com.example.projectedsa.R;
+import com.example.projectedsa.models.Inventory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
