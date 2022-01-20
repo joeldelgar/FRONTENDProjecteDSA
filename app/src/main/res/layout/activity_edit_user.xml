@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fons3"
-    tools:context=".activities.editUserActivity">
+    tools:context=".editUserActivity">
 
     <Button
         android:id="@+id/Edit_btn"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.projectedsa" >
+    package="com.dsa.frontendprojecte" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -15,37 +15,37 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name=".launcherActivity"
+            android:name="com.dsa.frontendprojecte.launcherActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.dsa.frontendprojecte.SplashActivity"
             android:exported="true" />
         <activity
-            android:name=".InventoryActivity"
+            android:name="com.dsa.frontendprojecte.InventoryActivity"
             android:exported="true" />
         <activity
-            android:name=".gameActivity"
+            android:name="com.dsa.frontendprojecte.gameActivity"
             android:exported="true" />
         <activity
-            android:name=".statsActivity"
+            android:name="com.dsa.frontendprojecte.statsActivity"
             android:exported="true" />
         <activity
-            android:name=".registerActivity"
+            android:name="com.dsa.frontendprojecte.registerActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.editUserActivity"
+            android:name="com.dsa.frontendprojecte.editUserActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.buy_objectActivity"
+            android:name="com.dsa.frontendprojecte.buyItemActivity"
             android:exported="true" />
         <activity
-            android:name=".storeActivity"
+            android:name="com.dsa.frontendprojecte.storeActivity"
             android:exported="true" />
         <activity
-            android:name=".PrincipalActivity"
+            android:name="com.dsa.frontendprojecte.PrincipalActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.dsa.frontendprojecte.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
