@@ -80,6 +80,10 @@ public class editUserActivity extends AppCompatActivity {
                         int variable = response.code();
                         Log.i("UPDATE CODE", "/"+variable);
                         if(response.isSuccessful()){
+                            SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putString("User", n);
+                            editor.commit();
                             User user = response.body();
                             Log.i("UPDATE", "OK"+user);
                             Toast.makeText(editUserActivity.this, "USUARI EDITAT CORRECTAMENT", Toast.LENGTH_LONG).show();

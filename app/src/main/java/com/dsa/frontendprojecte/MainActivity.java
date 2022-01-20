@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dsa.frontendprojecte.connections.API;
+import com.dsa.frontendprojecte.connections.UnityConnect;
 import com.dsa.frontendprojecte.models.RegisterCredentials;
 import com.dsa.frontendprojecte.models.User;
 import com.google.gson.Gson;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                             editor.putString("psw", userPsw);
                             editor.putString("mail", userMail);
                             editor.commit();
+                            UnityConnect.setUserName(userName);
 
                             Toast.makeText(MainActivity.this, "Usuari i Contrasenya Correctes", Toast.LENGTH_LONG).show();
                         }else{

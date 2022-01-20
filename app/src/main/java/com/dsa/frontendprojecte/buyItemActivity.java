@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dsa.frontendprojecte.connections.API;
+import com.dsa.frontendprojecte.models.Inventory;
 import com.dsa.frontendprojecte.models.StoreCredentials;
 import com.dsa.frontendprojecte.models.Item;
 import com.google.gson.Gson;
@@ -74,13 +75,13 @@ public class buyItemActivity extends AppCompatActivity {
                 Gson gson = new GsonBuilder().setLenient().create();
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
                 API gerritAPI = retrofit.create(API.class);
-                Call<Item> call = gerritAPI.buyItem(itemName, new StoreCredentials(itemName, userName));
-                call.enqueue(new Callback<Item>() {
+                Call<Inventory> call = gerritAPI.buyItem(itemName, new StoreCredentials(itemName, userName));
+                call.enqueue(new Callback<Inventory>() {
                     @Override
-                    public void onResponse(Call<Item> call, Response<Item> response) {
+                    public void onResponse(Call<Inventory> call, Response<Inventory> response) {
                         int variable = response.code();
-                        Item item = response.body();
-                        String itemNom = item.getName();
+                        Inventory inventory = response.body();
+                        String itemNom = inventory.getItemName();
                         Log.i("Buy CODE",":"+variable);
                         if (variable == 200) {
                             Intent intent = new Intent(getApplicationContext(), storeActivity.class);
@@ -94,7 +95,7 @@ public class buyItemActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<Item> call, Throwable t) {
+                    public void onFailure(Call<Inventory> call, Throwable t) {
                         Log.e("onFailure", "BUY ERROR",t);
                         Toast.makeText(buyItemActivity.this, "Error al comprar l'Item", Toast.LENGTH_LONG).show();
                     }

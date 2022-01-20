@@ -59,15 +59,15 @@ public interface API {
     Call<List<Item>> getAllItems();
 
     @PUT("store/buyItem/{itemName}")
-    Call<Item> buyItem(@Path("itemName") String itemName, @Body StoreCredentials sCr);
+    Call<Inventory> buyItem(@Path("itemName") String itemName, @Body StoreCredentials sCr);
 
     @PUT("store/collectItem/{itemName}")
-    Call<Item> collectItem(@Path("itemName") String itemName, @Body StoreCredentials sCr);
+    Call<Inventory> collectItem(@Path("itemName") String itemName, @Body StoreCredentials sCr);
 
     @GET("store/userInventoryList/{userName}")
     Call<List<Inventory>> getUserInventory(@Path("userName") String name);
 
     @PUT("store/useItem/{itemName}")
-    Call<Item> useItem(@Path("itemName") String itemName, @Body StoreCredentials sCr);
+    Call<Inventory> useItem(@Path("itemName") String itemName, @Body StoreCredentials sCr);
 
 }
