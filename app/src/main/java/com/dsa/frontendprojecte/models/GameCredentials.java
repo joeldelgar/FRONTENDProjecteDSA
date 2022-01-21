@@ -3,12 +3,14 @@ package com.dsa.frontendprojecte.models;
 public class GameCredentials {
     String userName;
     int points;
+    int health;
 
     public GameCredentials(){}
 
-    public GameCredentials(String userName, int points) {
+    public GameCredentials(String userName, int points, int health) {
         this.userName = userName;
         this.points = points;
+        this.health = health;
     }
 
     public String getUserName() {
@@ -25,5 +27,13 @@ public class GameCredentials {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

@@ -27,6 +27,9 @@ public interface API {
     @POST("user/register")
     Call<User> register(@Body RegisterCredentials user);
 
+    @GET ("user/{name}")
+    Call<User> getUser(@Path("name") String name);
+
     @PUT("user/update/{name}")
     Call<User> updateUser(@Path("name") String oldName, @Body RegisterCredentials user);
 
