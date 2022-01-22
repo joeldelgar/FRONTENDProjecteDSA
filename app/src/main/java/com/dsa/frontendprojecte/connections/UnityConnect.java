@@ -2,6 +2,7 @@ package com.dsa.frontendprojecte.connections;
 
 import android.util.Log;
 
+import com.dsa.frontendprojecte.launcherActivity;
 import com.dsa.frontendprojecte.models.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,11 +17,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UnityConnect {
 
-    /*    public Game game;
-        public Inventory inventory;
-        public Item item;
-        public User user;*/
+    public static User user;
+    public static Game game;
+
     public static String userName;
+    public static String UserInventoryByCommas;
+
+    public static int coins;
+    public static int finalCoins;
 
     public static void setUserName(String userName) {
         UnityConnect.userName = userName;
@@ -31,8 +35,6 @@ public class UnityConnect {
     }
 
     public static String getUserInventory(){
-        //String[] UserInventory;
-        final String[] UserInventoryByCommas = new String[0];
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
@@ -40,32 +42,34 @@ public class UnityConnect {
         call.enqueue(new Callback<List<Inventory>>() {
             @Override
             public void onResponse(Call<List<Inventory>> call, Response<List<Inventory>> response) {
-                Log.i("onResponse","getUserInventory ERROR, call: " + response.code());
-                List<Inventory> inventoryList =  response.body();
-                for (Inventory i: inventoryList) {
-                    if (i.getItemName().equals("magicBerry"))
-                        UserInventoryByCommas[0] = UserInventoryByCommas[0] + i.getItemQuantity() + ",";
-                    else
-                        UserInventoryByCommas[0] = UserInventoryByCommas[0] + i.getItemName() + ",";
-                }
-                //UserInventoryByCommas[0].deleteCharAt(UserInventoryByCommas[0].length() - 1);
-                if(inventoryList == null){
-                    Log.i("onResponse","getUserInventory OK, but Empty");
+                if (!response.isSuccessful()) {
+                    Log.i("onResponse","getUserInventory ERROR, call: " + response.code());
                 } else {
-                    Log.i("onResponse","getUserInventory OK");
+                    List<Inventory> inventoryList =  response.body();
+                    if(inventoryList == null){
+                        Log.i("onResponse","getUserInventory OK, but Empty");
+                    } else {
+                        Log.i("onResponse","getUserInventory OK");
+                        for (Inventory i: inventoryList) {
+                            if (i.getItemName().equals("magicBerry"))
+                                UserInventoryByCommas = UserInventoryByCommas + i.getItemQuantity() + ",";
+                            else
+                                UserInventoryByCommas = UserInventoryByCommas + i.getItemName() + ",";
+                        }
+                        //UserInventoryByCommas.deleteCharAt(UserInventoryByCommas.length() - 1);
+                    }
                 }
             }
             @Override
             public void onFailure(Call<List<Inventory>> call, Throwable t) {
                 Log.e("onFailure", "getUserInventory ERROR",t);
-                UserInventoryByCommas[0] = "-1";
+                UserInventoryByCommas = "-1";
             }
         });
-        return UserInventoryByCommas[0];
+        return UserInventoryByCommas;
     }
 
     public static User getUser() {
-        final User[] user = new User[0];
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
@@ -75,56 +79,58 @@ public class UnityConnect {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (!response.isSuccessful()) {
                     Log.i("onResponse", "getUser ERROR, call: " + response.code());
-                    user[0] = response.body();
                 } else {
                     Log.i("onResponse", "getUser OK");
+                    user = response.body();
+                   /* Log.i("onResponse", "getUserCoins: " + user.getCoins());
+                    coins = user.getCoins();*/
                 }
             }
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 Log.e("onFailure", "getUser ERROR",t);
-                user[0] = user[1];
             }
         });
-        return user[0];
+        return user;
     }
 
     public static int getCoins() {
-        User user = getUser();
-        return user.getCoins();
+//        getUser();
+        return getUser().getCoins();
+//        return user.getCoins();
+//        return 0;
+//        return coins;
     }
 
-    public int updateCoins(int unityCoins) {
-        final int[] finalCoins = new int[0];
+/*    public int updateCoins(int unityCoins) { ;
         int databaseCoins = getCoins();
-
         if (unityCoins != databaseCoins + 1) {
-            finalCoins[0] = databaseCoins + 1;
+            finalCoins = databaseCoins + 1;
             Gson gson = new GsonBuilder().setLenient().create();
             Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
             API gerritAPI = retrofit.create(API.class);
-            Call<User> call = gerritAPI.updateUserCoins(userName, new CoinsCredentials(finalCoins[0], userName));
+            Call<User> call = gerritAPI.updateUserCoins(userName, new CoinsCredentials(finalCoins, userName));
             call.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
                     if (!response.isSuccessful()) {
                         Log.i("onResponse", "updateUserCoins ERROR, call: " + response.code());
-                        finalCoins[0] = -1;
+                        finalCoins = -1;
                     } else
                         Log.i("onResponse", "updateUserCoins OK");
                 }
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
                     Log.e("onFailure", "updateUserCoins ERROR", t);
-                    finalCoins[0] = -1;
+                    finalCoins = -1;
                 }
             });
         } else {
             Log.i("onResponse", "updateUserCoins OK");
-            finalCoins[0] = unityCoins;
+            finalCoins = unityCoins;
         }
-        return finalCoins[0];
-    }
+        return finalCoins;
+    }*/
 
     public void collectItem(String itemName) {
         Gson gson = new GsonBuilder().setLenient().create();
@@ -167,7 +173,6 @@ public class UnityConnect {
     }
 
     public static Game getGame() {
-        final Game[] game = new Game[0];
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
@@ -177,28 +182,25 @@ public class UnityConnect {
             public void onResponse(Call<Game> call, Response<Game> response) {
                 if (!response.isSuccessful()) {
                     Log.i("onResponse", "getGame ERROR, call: " + response.code());
-                    game[0] = response.body();
                 } else {
                     Log.i("onResponse", "getGame OK");
+                    game = response.body();
                 }
             }
             @Override
             public void onFailure(Call<Game> call, Throwable t) {
                 Log.e("onFailure", "getGame ERROR",t);
-                game[0] = game[1];
             }
         });
-        return game[0];
+        return game;
     }
 
     public static int getPoints() {
-        Game game = getGame();
-        return game.getPoints();
+        return getGame().getPoints();
     }
 
     public static int getHealth() {
-        Game game = getGame();
-        return game.getHealth();
+        return getGame().getHealth();
     }
 
     public void saveGame(int points, int health) {
@@ -221,7 +223,6 @@ public class UnityConnect {
                         public void onResponse(Call<Game> call2, Response<Game> response) {
                             if (!response.isSuccessful()) {
                                 Log.i("onResponse", "updateGame ERROR, call: " + response.code());
-
                             } else
                                 Log.i("onResponse", "updateGame OK");
                         }
