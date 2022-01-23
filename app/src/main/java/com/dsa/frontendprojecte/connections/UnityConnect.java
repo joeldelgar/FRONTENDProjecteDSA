@@ -81,9 +81,9 @@ public class UnityConnect {
                     Log.i("onResponse", "getUser ERROR, call: " + response.code());
                 } else {
                     Log.i("onResponse", "getUser OK");
-                    user = response.body();
-                   /* Log.i("onResponse", "getUserCoins: " + user.getCoins());
-                    coins = user.getCoins();*/
+                    User user = response.body();
+                    Log.i("onResponse", "getUserCoins: " + user.getCoins());
+                    //coins = user.getCoins();
                 }
             }
             @Override
@@ -95,8 +95,8 @@ public class UnityConnect {
     }
 
     public static int getCoins() {
-//        getUser();
-        return getUser().getCoins();
+        getUser();
+        return user.getCoins();
 //        return user.getCoins();
 //        return 0;
 //        return coins;
@@ -132,7 +132,7 @@ public class UnityConnect {
         return finalCoins;
     }*/
 
-    public void collectItem(String itemName) {
+    public static void collectItem(String itemName) {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
@@ -152,7 +152,7 @@ public class UnityConnect {
         });
     }
 
-    public void useItem(String itemName) {
+    public static void useItem(String itemName) {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
@@ -203,7 +203,7 @@ public class UnityConnect {
         return getGame().getHealth();
     }
 
-    public void saveGame(int points, int health) {
+    public static void saveGame(int points, int health) {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
