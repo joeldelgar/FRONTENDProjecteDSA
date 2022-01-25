@@ -1,6 +1,8 @@
 package com.dsa.frontendprojecte;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -18,9 +20,10 @@ public class launcherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
 
-        String userName = UnityConnect.getUserName();
-        Log.i("launcher","userName OK: " +userName);
+        SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        String userName = sharedPref.getString("User",null);
 
+        Log.i("launcher","userName OK: " +userName);
 /*        int coins = UnityConnect.getCoins();
         Log.i("launcher","coins OK: " +coins);*/
 /*        int points = UnityConnect.getPoints();

@@ -1,13 +1,8 @@
 package com.dsa.frontendprojecte.connections;
 
-import android.os.StrictMode;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
-import com.dsa.frontendprojecte.launcherActivity;
 import com.dsa.frontendprojecte.models.*;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -84,13 +79,49 @@ public class UnityConnect {
         return UserInventoryByCommas;
     }
 
+    static Thread getUserThread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try {
+                Log.i("Testing", "getUser 1");
+                try {
+                    Gson gson = new GsonBuilder().setLenient().create();
+                    Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
+                    API gerritAPI = retrofit.create(API.class);
+                    Call<User> call = gerritAPI.getUser(userName);
+                    Log.i("Testing", "getUser 2");
+                    Response<User> response = call.execute();
+                    Log.i("Testing", "getUser 3");
+                    if (!response.isSuccessful()) {
+                        Log.i("call", "getUser ERROR, call: " + response.code());
+                    } else {
+                        Log.i("call", "getUser OK");
+                        user = response.body();
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    });
+
     /*    public static void getUser(@Nullable onResponseReturn callbacks) {*/
-    public static User getUser() {
-        Gson gson = new GsonBuilder().setLenient().create();
+    public static void getUser() {
+        getUserThread.start();
+        try {
+            Thread.sleep(500);
+            //Se lo bajo demasiado hace el catch
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        Log.i("Testing", "getUser - getUserCoins: " + user.getCoins());
+/*        Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
-        Call<User> call = gerritAPI.getUser(userName);
-        Log.i("Testing", "getUser 1");
+        Call<User> call = gerritAPI.getUser(userName);*/
+/*         Log.i("Testing", "getUser 1");
         try {
             Log.i("Testing", "getUser 2");
             Response<User> response = call.execute();
@@ -103,7 +134,7 @@ public class UnityConnect {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
+        }*/
 /*        call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
@@ -111,11 +142,11 @@ public class UnityConnect {
                     Log.i("onResponse", "getUser ERROR, call: " + response.code());
                 } else {
                     Log.i("onResponse", "getUser OK");
-                    User user2 = response.body();
-                    Log.i("onResponse", "getUserCoins: " + user2.getCoins());
-                    int coins2 = user2.getCoins();
+                    user = response.body();
+                    Log.i("onResponse", "getUser - getUserCoins: " + user.getCoins());
+                    //int coins2 = user2.getCoins();
                     //callbacks.onSuccessUser(user2);
-                    callbacks.onSuccessInt(coins2);
+                    //callbacks.onSuccessInt(coins2);
                 }
             }
             @Override
@@ -123,14 +154,25 @@ public class UnityConnect {
                 Log.e("onFailure", "getUser ERROR",t);
             }
         });*/
-        return user;
+/*        try {
+            TimeUnit.MILLISECONDS.sleep(2000);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }*/
+//        return user;
     }
 
     public static int getCoins() {
+        getUser();
+/*        try {
+           TimeUnit.MILLISECONDS.sleep(2000);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }*/
 //        getUser(oRR);
 //        user = null;
 //        User user = oRR;
-        return getUser().getCoins();
+        return user.getCoins();
 //        Log.i("getCoins", "getUserCoins: " + user.getCoins());
 //        return user.getCoins();
 //        return coins;
