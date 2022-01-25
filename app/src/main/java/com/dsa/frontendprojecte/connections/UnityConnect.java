@@ -1,6 +1,9 @@
 package com.dsa.frontendprojecte.connections;
 
+import android.os.StrictMode;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import com.dsa.frontendprojecte.launcherActivity;
 import com.dsa.frontendprojecte.models.*;
@@ -17,6 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UnityConnect {
 
+    public static onResponseReturn oRR;
+
     public static User user;
     public static Game game;
 
@@ -24,6 +29,11 @@ public class UnityConnect {
     public static String UserInventoryByCommas;
 
     public static int coins;
+
+    public static void setCoins(int coins) {
+        UnityConnect.coins = coins;
+    }
+
     public static int finalCoins;
 
     public static void setUserName(String userName) {
@@ -32,6 +42,10 @@ public class UnityConnect {
 
     public static String getUserName() {
         return userName;
+    }
+
+    public static void setUser(User user) {
+        UnityConnect.user = user;
     }
 
     public static String getUserInventory(){
@@ -69,11 +83,25 @@ public class UnityConnect {
         return UserInventoryByCommas;
     }
 
-    public static User getUser() {
+    public static void getUser(@Nullable onResponseReturn callbacks) {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
         Call<User> call = gerritAPI.getUser(userName);
+        Log.i("Testing", "getUser 1");
+/*        try {
+            Log.i("Testing", "getUser 2");
+            Response<User> response = call.execute();
+            Log.i("Testing", "getUser 3");
+            if (!response.isSuccessful()) {
+                Log.i("call", "getUser ERROR, call: " + response.code());
+            } else {
+                Log.i("call", "getUser OK");
+                user2 = response.body();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }*/
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
@@ -81,9 +109,11 @@ public class UnityConnect {
                     Log.i("onResponse", "getUser ERROR, call: " + response.code());
                 } else {
                     Log.i("onResponse", "getUser OK");
-                    User user = response.body();
-                    Log.i("onResponse", "getUserCoins: " + user.getCoins());
-                    //coins = user.getCoins();
+                    User user2 = response.body();
+                    Log.i("onResponse", "getUserCoins: " + user2.getCoins());
+                    int coins2 = user2.getCoins();
+                    //callbacks.onSuccessUser(user2);
+                    callbacks.onSuccessInt(coins2);
                 }
             }
             @Override
@@ -91,15 +121,17 @@ public class UnityConnect {
                 Log.e("onFailure", "getUser ERROR",t);
             }
         });
-        return user;
+//        return user2;
     }
 
     public static int getCoins() {
-        getUser();
-        return user.getCoins();
+        getUser(oRR);
+        user = null;
+//        User user = oRR;
+//        return getUser().getCoins();
+//        Log.i("getCoins", "getUserCoins: " + user.getCoins());
 //        return user.getCoins();
-//        return 0;
-//        return coins;
+        return coins;
     }
 
 /*    public int updateCoins(int unityCoins) { ;

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dsa.frontendprojecte.connections.UnityConnect;
@@ -19,11 +20,11 @@ public class launcherActivity extends AppCompatActivity {
         String userName = UnityConnect.getUserName();
         Log.i("launcher","userName OK: " +userName);
 
-        //UnityConnect.getUser();
+        int coins = UnityConnect.getCoins();
 /*        String name = this.manager.getUser().getName();
         Log.i("launcher","name OK: " +name);*/
-        //int coins = UnityConnect.getCoins();
-        //Log.i("launcher","coins OK: " +coins);
+//        int coins = UnityConnect.getCoins();
+        Log.i("launcher","coins OK: " +coins);
 /*        int points = UnityConnect.getPoints();
         Log.i("launcher","points OK: " +points);
         int health = UnityConnect.getHealth();
@@ -34,8 +35,8 @@ public class launcherActivity extends AppCompatActivity {
         Intent intent = new Intent (getApplicationContext(), UnityPlayerActivity.class);
         intent.putExtra("userName", userName);
         Log.i("intent","userName OK");
-/*        intent.putExtra("coins", coins);
-        intent.putExtra("points", points);
+/*        intent.putExtra("coins", coins);*/
+/*         intent.putExtra("points", points);
         intent.putExtra("health", health);
         intent.putExtra("userInventory", userInventory);*/
         startActivity(intent);
