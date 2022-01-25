@@ -23,23 +23,27 @@ public class launcherActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
         String userName = sharedPref.getString("User",null);
 
+/*        public String getUserName() {
+            return userName;
+        }*/
+
         Log.i("launcher","userName OK: " +userName);
-/*        int coins = UnityConnect.getCoins();
-        Log.i("launcher","coins OK: " +coins);*/
-/*        int points = UnityConnect.getPoints();
+        int coins = UnityConnect.getCoins();
+        Log.i("launcher","coins OK: " +coins);
+        int points = UnityConnect.getPoints();
         Log.i("launcher","points OK: " +points);
         int health = UnityConnect.getHealth();
         Log.i("launcher","health OK: " +health);
         String userInventory = UnityConnect.getUserInventory();
-        Log.i("launcher","userInventory OK: " +userInventory);*/
+        Log.i("launcher","userInventory OK: " +userInventory);
 
         Intent intent = new Intent (getApplicationContext(), UnityPlayerActivity.class);
         intent.putExtra("userName", userName);
         Log.i("intent","userName OK");
-/*        intent.putExtra("coins", coins);*/
-/*         intent.putExtra("points", points);
+        intent.putExtra("coins", coins);
+        intent.putExtra("points", points);
         intent.putExtra("health", health);
-        intent.putExtra("userInventory", userInventory);*/
+        intent.putExtra("userInventory", userInventory);
         startActivity(intent);
     }
 }

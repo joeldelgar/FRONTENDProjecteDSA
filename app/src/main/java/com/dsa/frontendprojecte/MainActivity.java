@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                             editor.putString("psw", userPsw);
                             editor.putString("mail", userMail);
                             editor.commit();
-                            //UnityConnect.setUserName(userName);
+                            UnityConnect.setUserName(userName);
 
                             Toast.makeText(MainActivity.this, "Usuari i Contrasenya Correctes", Toast.LENGTH_LONG).show();
                         }else{
