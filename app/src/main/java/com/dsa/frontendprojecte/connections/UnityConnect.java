@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import com.dsa.frontendprojecte.launcherActivity;
 import com.dsa.frontendprojecte.models.*;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -20,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UnityConnect {
 
-    public static onResponseReturn oRR;
+/*    public static onResponseReturn oRR;*/
 
     public static User user;
     public static Game game;
@@ -30,9 +31,9 @@ public class UnityConnect {
 
     public static int coins;
 
-    public static void setCoins(int coins) {
+/*    public static void setCoins(int coins) {
         UnityConnect.coins = coins;
-    }
+    }*/
 
     public static int finalCoins;
 
@@ -44,9 +45,9 @@ public class UnityConnect {
         return userName;
     }
 
-    public static void setUser(User user) {
+/*    public static void setUser(User user) {
         UnityConnect.user = user;
-    }
+    }*/
 
     public static String getUserInventory(){
         Gson gson = new GsonBuilder().setLenient().create();
@@ -83,13 +84,14 @@ public class UnityConnect {
         return UserInventoryByCommas;
     }
 
-    public static void getUser(@Nullable onResponseReturn callbacks) {
+    /*    public static void getUser(@Nullable onResponseReturn callbacks) {*/
+    public static User getUser() {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         API gerritAPI = retrofit.create(API.class);
         Call<User> call = gerritAPI.getUser(userName);
         Log.i("Testing", "getUser 1");
-/*        try {
+        try {
             Log.i("Testing", "getUser 2");
             Response<User> response = call.execute();
             Log.i("Testing", "getUser 3");
@@ -97,12 +99,12 @@ public class UnityConnect {
                 Log.i("call", "getUser ERROR, call: " + response.code());
             } else {
                 Log.i("call", "getUser OK");
-                user2 = response.body();
+                user = response.body();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-        }*/
-        call.enqueue(new Callback<User>() {
+        }
+/*        call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (!response.isSuccessful()) {
@@ -120,18 +122,18 @@ public class UnityConnect {
             public void onFailure(Call<User> call, Throwable t) {
                 Log.e("onFailure", "getUser ERROR",t);
             }
-        });
-//        return user2;
+        });*/
+        return user;
     }
 
     public static int getCoins() {
-        getUser(oRR);
-        user = null;
+//        getUser(oRR);
+//        user = null;
 //        User user = oRR;
-//        return getUser().getCoins();
+        return getUser().getCoins();
 //        Log.i("getCoins", "getUserCoins: " + user.getCoins());
 //        return user.getCoins();
-        return coins;
+//        return coins;
     }
 
 /*    public int updateCoins(int unityCoins) { ;

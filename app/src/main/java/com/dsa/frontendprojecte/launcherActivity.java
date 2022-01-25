@@ -2,6 +2,7 @@ package com.dsa.frontendprojecte;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -20,11 +21,8 @@ public class launcherActivity extends AppCompatActivity {
         String userName = UnityConnect.getUserName();
         Log.i("launcher","userName OK: " +userName);
 
-        int coins = UnityConnect.getCoins();
-/*        String name = this.manager.getUser().getName();
-        Log.i("launcher","name OK: " +name);*/
-//        int coins = UnityConnect.getCoins();
-        Log.i("launcher","coins OK: " +coins);
+/*        int coins = UnityConnect.getCoins();
+        Log.i("launcher","coins OK: " +coins);*/
 /*        int points = UnityConnect.getPoints();
         Log.i("launcher","points OK: " +points);
         int health = UnityConnect.getHealth();
