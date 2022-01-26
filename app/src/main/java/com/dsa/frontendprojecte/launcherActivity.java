@@ -22,10 +22,7 @@ public class launcherActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE);
         String userName = sharedPref.getString("User",null);
-
-/*        public String getUserName() {
-            return userName;
-        }*/
+        UnityConnect.setUserName(userName);
 
         Log.i("launcher","userName OK: " +userName);
         int coins = UnityConnect.getCoins();

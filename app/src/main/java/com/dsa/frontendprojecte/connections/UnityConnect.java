@@ -22,26 +22,11 @@ public class UnityConnect {
 
     public static String userName;
     public static String UserInventoryByCommas;
-
-    public static int coins;
-
-/*    public static void setCoins(int coins) {
-        UnityConnect.coins = coins;
-    }*/
-
     public static int finalCoins;
 
     public static void setUserName(String userName) {
         UnityConnect.userName = userName;
     }
-
-    public static String getUserName() {
-        return userName;
-    }
-
-/*    public static void setUser(User user) {
-        UnityConnect.user = user;
-    }*/
 
     static Thread getUserInventoryThread = new Thread(new Runnable() {
         @Override
@@ -82,7 +67,6 @@ public class UnityConnect {
         getUserInventoryThread.start();
         try {
             Thread.sleep(500);
-            //Se lo bajo demasiado hace el catch
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -115,7 +99,6 @@ public class UnityConnect {
 
     /*    public static void getUser(@Nullable onResponseReturn callbacks) {*/
     public static void getUser() {
-        //setUserName(userName);
         getUserThread.start();
         try {
             Thread.sleep(500);
@@ -248,7 +231,6 @@ public class UnityConnect {
         getGameThread.start();
         try {
             Thread.sleep(500);
-            //Se lo bajo demasiado hace el catch
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -262,7 +244,6 @@ public class UnityConnect {
     public static int getHealth() {
         Log.i("Conn","health");
         //if(getGameThread.running...
-        //getGame();
         if(game == null)
             getGame();
         return game.getHealth();
